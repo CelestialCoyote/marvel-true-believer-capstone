@@ -1,0 +1,30 @@
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0.5em;
+}
+
+.searchText {
+    background-color: lightgray;
+    border: 2px solid red;
+    border-radius: 0.5em;
+    color: red;
+    font-size: 1.5em;
+    margin-right: 1.5em;
+    padding: 0.25em;
+    width: 50%;
+}
+
+.searchText::placeholder {
+    color: gray;
+}
+
+.searchBar button {
+    background-color: lightgray;
+    border: 2px solid red;
+    border-radius: 0.5em;
+    color: red;
+    font-size: 1.5em;
+    width: 5.0em;
+}

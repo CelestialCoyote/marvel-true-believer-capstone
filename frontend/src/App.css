@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #002d5c;
+    display: flex;
+    font-family: 'Comic Neue', sans-serif;
+    min-height: 100vh;
+    --marvelLogo-red: #ed1d24;
+    --captainAmerica-darkblue: #002d5c;
+    --captainAmerica-blue: #0000dd;
+    --captainAmerica-red: #870000;
+    --captainAmerica-gray: #a5a5ab;
+    --captainAmerica-white: #f0f0f0;
+}
+
+#root {
+    display: flex;
+    flex-grow: 1;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}

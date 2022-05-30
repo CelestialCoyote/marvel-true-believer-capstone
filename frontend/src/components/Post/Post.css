@@ -1,0 +1,53 @@
+.post {
+    align-items: flex-start;
+    border-bottom: 2px solid var(--captainAmerica-gray);
+    border-left: 2px solid var(--captainAmerica-gray);
+    border-radius: 0.5em;
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+.post__body {
+    flex: 1;
+    padding: 10px;
+}
+
+.post__avatar img {
+    border-radius: 2.0em;
+    height: 4.0em;
+    margin: 1.5em;
+    width: 4.0em;
+}
+
+.post__text {
+    color: var(--captainAmerica-white);
+    font-size: 1.25em;
+    margin-bottom: 1.5em;
+}
+
+.post__userName {
+    color: var(--captainAmerica-gray);
+    font-size: 1.0emem;
+    margin-bottom: 1.0em;
+}
+
+.post__date,
+.post__likeCount {
+    color: var(--captainAmerica-white);
+    font-size: 1.0em;
+}
+
+.post__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.post__like {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 1.0em;
+    width: 4.0em;
+}

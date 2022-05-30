@@ -1,0 +1,12 @@
+footer {
+    background-color: black;
+    bottom: 0;
+    color: var(--captainAmerica-gray);
+    font-size: 0.8em;
+    height: 3.0em;
+    left: 0;
+    padding: 1.0em;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
