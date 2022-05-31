@@ -11,7 +11,11 @@ const CharacterCardMapper = ({ characters }) => {
             <ul className="characterCardMapper__ul">
                 {characters &&
                     characters.map(character =>
-                        <li key={character.id}> <CharacterCard character={character} /> </li>
+                        <li key={character.id}>
+                            <CharacterCard
+                                character={character}
+                            />
+                        </li>
                     )
                 }
             </ul>

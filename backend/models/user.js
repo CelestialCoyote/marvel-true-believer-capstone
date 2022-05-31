@@ -47,15 +47,15 @@ const userSchema = mongoose.Schema({
         { type: mongoose.Types.ObjectId }
     ],
     favoriteCharacters: [
-        { type: Object }
+        { type: favoriteCharacterSchema }
     ],
     favoriteComics: [
-        {  }
+        {}
     ],
     favoriteCreators: [
-        {  }
+        {}
     ]
-}, {timestamps: true});
+}, { timestamps: true });
 
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign(

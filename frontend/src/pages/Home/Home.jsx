@@ -8,10 +8,10 @@ import "./Home.css";
 
 
 const Home = () => {
-    const [posts, setPosts] = useState(null);
-    const [postsWithUserInfo, setPostsWithUserInfo] = useState(null);
     const { user } = useContext(AuthContext);
     const decodedUser = localStorage.getItem("token");
+    const [posts, setPosts] = useState(null);
+    const [postsWithUserInfo, setPostsWithUserInfo] = useState(null);
 
     const handleGetPosts = async () => {
         let response = await axios.get(

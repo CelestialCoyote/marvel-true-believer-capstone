@@ -121,26 +121,6 @@ router.get("/:userID/getOneUser", [auth], async (req, res) => {
     }
 });
 
-// GET a user's favorite characters array.
-router.get("/:userID/getFavoriteCharacters", [auth], async (req, res) => {
-    try {
-        let user = await User.findById(req.params.userID);
-        if (!user)
-            return res
-                .status(400)
-                .send(`User with id ${req.params.userID} does not exist!`);
-        await User.findById();
-
-        return res
-            .status(200)
-            .send(user.favoriteCharacters);
-    } catch (ex) {
-        return res
-            .status(500)
-            .send(`Internal Server Error: ${ex}`);
-    }
-});
-
 // PUT to update user information by ID.
 router.put("/:userID/updateUser", [auth], async (req, res) => {
     try {
@@ -176,15 +156,55 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
     }
 });
 
-// PUT to update user favoriteCharacters array add a favorite.
-router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) => {
+//  Only for images PUT request
+router.put("/:userID/updateUserImage", [auth, fileUpload.single("image")], async (req, res) => {
     try {
-        //const { error } = validateFavoriteCharacter(req.body);
-        //if (error)
-        //    return res
-        //        .status(400)
-        //        .send(`Body for favoriteCharacter not valid! ${error}`);
+        let user = await User.findById(req.params.userID);
+        if (!user)
+            return res
+                .status(400)
+                .send(`User with ObjectId ${req.params.userID} does not exist.`);
 
+        user.image = req.file.path;
+        await user.save();
+
+        const token = user.generateAuthToken();
+
+        return res
+            .status(200)
+            .header("x-auth-token", token)
+            .header("access-control-expose-headers", "x-auth-token")
+            .send(user);
+    } catch (ex) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${ex}`);
+    }
+});
+
+// GET a user's favorite characters array.
+router.get("/:userID/getFavoriteCharacters", [auth], async (req, res) => {
+    try {
+        let user = await User.findById(req.params.userID);
+        if (!user)
+            return res
+                .status(400)
+                .send(`User with id ${req.params.userID} does not exist!`);
+        await User.findById();
+
+        return res
+            .status(200)
+            .send(user.favoriteCharacters);
+    } catch (ex) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${ex}`);
+    }
+});
+
+// PUT to add a favorite character to favoriteCharacters array.
+router.put("/:userID/addFavoriteCharacter", [auth], async (req, res) => {
+    try {
         let user = await User.findById(req.params.userID);
         if (!user)
             return res
@@ -207,16 +227,16 @@ router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) 
     }
 });
 
-//  Only for images PUT request
-router.put("/:userID/updateUserImage", [auth, fileUpload.single("image")], async (req, res) => {
+// PUT to update user favoriteCharacters array add a favorite.
+router.put("/:userID/removeFavoriteCharacter/:marvelID", [auth], async (req, res) => {
     try {
         let user = await User.findById(req.params.userID);
         if (!user)
             return res
                 .status(400)
                 .send(`User with ObjectId ${req.params.userID} does not exist.`);
-
-        user.image = req.file.path;
+        user.favoriteCharacters.splice(user.favoriteCharacters.indexOf(marvelID._id), 1);
+        //user.favoriteCharacters.push(req.body);
         await user.save();
 
         const token = user.generateAuthToken();

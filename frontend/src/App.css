@@ -12,7 +12,7 @@ body {
     display: flex;
     font-family: 'Comic Neue', sans-serif;
     min-height: 100vh;
-    overflow: hidden;
+    /*overflow: hidden;*/
     --marvelLogo-red: #ed1d24;
     --captainAmerica-darkblue: #002d5c;
     --captainAmerica-blue: #0000dd;

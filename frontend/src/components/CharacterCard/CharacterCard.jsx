@@ -1,31 +1,23 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import AuthContext from "../../context/AuthContext";
+import AuthContext from '../../context/AuthContext';
 import './CharacterCard.css';
 
 
-const CharacterCard = ( {character} ) => {
-    const baseUrl = `http://localhost:3015/api/users`;
+const CharacterCard = ( { character, setFavorite } ) => {
     const { user, setUser } = useContext(AuthContext);
+    const BASE_USER_URL = `http://localhost:3015/api/users`;
     const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     const addToFavoriteCharacters = async () => {
-        //const data = {
-        //    marvelID: `${character.id}`,
-        //    marvelName: `${character.name}`,
-        //    marvelImage: `${characterImage}`,
-        //    marvelDescription: `${character.description}`
-        //};
-
-        console.log('CharacterToAdd: ', character);
+        console.log('CharacterToAdd: ', character.id);
 
         try {
             await axios
                 .put(
-                    `${baseUrl}/${user._id}/updateUser/addFavoriteCharacter`,
-                    //data,
-                    character,
+                    `${BASE_USER_URL}/${user._id}/addFavoriteCharacter`,
+                    { marvelID: `${character.id}` },
                     { headers: { "x-auth-token": localStorage.getItem("token") } }
                 )
                 .then((res) => {
