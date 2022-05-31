@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from '../../context/AuthContext';
-import useCustomForm from '../../hooks/useCustomForm';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import AuthContext from '../../context/AuthContext';
+import useCustomForm from '../../hooks/useCustomForm';
 import './UserProfileEdit.css';
 
 
@@ -12,7 +12,8 @@ const UserProfileEdit = (props) => {
     const defaultValues = {
         userName: user.userName,
         email: user.email,
-        gender: user.gender,
+        firstName: user.firstName,
+        lastName: user.lastName,
         location: user.location,
     };
     const [formData, handleInputChange] = useCustomForm(defaultValues);

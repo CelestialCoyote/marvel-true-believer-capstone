@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
-const { postSchema } = require('../models/post');
+const { favoriteCharacterSchema } = require("./favoriteCharacter");
 
 
 const userSchema = mongoose.Schema({
@@ -29,22 +29,31 @@ const userSchema = mongoose.Schema({
         type: String,
         default: "../uploads/images/placeholder_avatar.jpg"
     },
+    firstName: {
+        type: String,
+        default: ""
+    },
+    lastName: {
+        type: String,
+        default: ""
+    },
     location: {
         type: String,
         minLength: 2,
         maxLength: 128,
         default: "Earth"
     },
-    age: {
-        type: Number
-    },
-    gender: {
-        type: String,
-        maxLength: 10,
-        default: "human"
-    },
     posts: [
         { type: mongoose.Types.ObjectId }
+    ],
+    favoriteCharacters: [
+        { type: favoriteCharacterSchema }
+    ],
+    favoriteComics: [
+        {  }
+    ],
+    favoriteCreators: [
+        {  }
     ]
 }, {timestamps: true});
 
@@ -55,9 +64,9 @@ userSchema.methods.generateAuthToken = function () {
             userName: this.userName,
             email: this.email,
             image: this.image,
+            firstName: this.firstName,
+            lastName: this.lastName,
             location: this.location,
-            age: this.age,
-            gender: this.gender,
             posts: this.posts,
         },
         process.env.JWT_SECRET
@@ -70,10 +79,11 @@ const validateUser = (user) => {
         email: Joi.string().min(2).max(128).required().email(),
         password: Joi.string().min(8).max(128),
         image: Joi.string(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
         location: Joi.string(),
-        age: Joi.number(),
-        gender: Joi.string(),
         posts: Joi.array(),
+        favoriteCharacters: Joi.array()
     });
 
     return schema.validate(user);

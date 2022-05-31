@@ -1,4 +1,5 @@
 const { User, validateLogin, validateUser } = require("../models/user");
+const { validateFavoriteCharacter } = require("../models/favoriteCharacter");
 const fileUpload = require("../middleware/file_upload");
 
 const auth = require("../middleware/auth");
@@ -41,9 +42,9 @@ router.post("/register", async (req, res) => {
                 userName: user.userName,
                 email: user.email,
                 image: user.image,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 location: user.location,
-                age: user.age,
-                gender: user.gender,
                 posts: user.posts
             });
     } catch (ex) {
@@ -136,9 +137,50 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
                 .send(`User with ObjectId ${req.params.userID} does not exist.`);
 
         user.userName = req.body.userName;
-        user.gender = req.body.gender;
+        user.firstName = req.body.firstName;
+        user.LastName = req.body.LastName;
         user.location = req.body.location;
         await user.save();
+
+        const token = user.generateAuthToken();
+
+        return res
+            .status(200)
+            .header("x-auth-token", token)
+            .header("access-control-expose-headers", "x-auth-token")
+            .send(user);
+    } catch (ex) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${ex}`);
+    }
+});
+
+// PUT to update user information by ID.
+router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) => {
+    try {
+        const { error } = validateFavoriteCharacter(req.body);
+        if (error)
+            return res
+                .status(400)
+                .send(`Body for favoriteCharacter not valid! ${error}`);
+
+//        const { error } = validateUser(req.body);
+//
+//        if (error)
+//            return res
+//                .status(400)
+//                .send(`Body for user not valid! ${error}`);
+
+        let user = await User.findById(req.params.userID);
+        if (!user)
+            return res
+                .status(400)
+                .send(`User with ObjectId ${req.params.userID} does not exist.`);
+        user.favoriteCharacters.push(req.body);
+        await user.save();
+
+
 
         const token = user.generateAuthToken();
 

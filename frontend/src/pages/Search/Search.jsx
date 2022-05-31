@@ -32,8 +32,11 @@ const Search = () => {
     return (
 
         <div className='search'>
+            <div>
             <MarvelSearch setSearchText={setSearchText} searchText={searchText} searchCharacters={searchCharacters} />
             <CharacterCardMapper characters={characters} />
+            </div>
+            
         </div>
 
     );
