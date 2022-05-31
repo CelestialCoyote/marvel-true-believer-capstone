@@ -121,6 +121,26 @@ router.get("/:userID/getOneUser", [auth], async (req, res) => {
     }
 });
 
+// GET a user's favorite characters array.
+router.get("/:userID/getFavoriteCharacters", [auth], async (req, res) => {
+    try {
+        let user = await User.findById(req.params.userID);
+        if (!user)
+            return res
+                .status(400)
+                .send(`User with id ${req.params.userID} does not exist!`);
+        await User.findById();
+
+        return res
+            .status(200)
+            .send(user.favoriteCharacters);
+    } catch (ex) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${ex}`);
+    }
+});
+
 // PUT to update user information by ID.
 router.put("/:userID/updateUser", [auth], async (req, res) => {
     try {
@@ -165,13 +185,6 @@ router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) 
                 .status(400)
                 .send(`Body for favoriteCharacter not valid! ${error}`);
 
-//        const { error } = validateUser(req.body);
-//
-//        if (error)
-//            return res
-//                .status(400)
-//                .send(`Body for user not valid! ${error}`);
-
         let user = await User.findById(req.params.userID);
         if (!user)
             return res
@@ -179,8 +192,6 @@ router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) 
                 .send(`User with ObjectId ${req.params.userID} does not exist.`);
         user.favoriteCharacters.push(req.body);
         await user.save();
-
-
 
         const token = user.generateAuthToken();
 

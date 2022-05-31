@@ -8,17 +8,21 @@ import './CharacterCard.css';
 const CharacterCard = ( {character} ) => {
     const baseUrl = `http://localhost:3015/api/users`;
     const { user, setUser } = useContext(AuthContext);
+    const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     const addToFavoriteCharacters = async () => {
+        const data = {
+            marvelID: character.id,
+            marvelName: character.name,
+            marvelImage: character.characterImage,
+            marvelDescription: character.description
+        };
+
         try {
             await axios
                 .put(
-                    `${baseUrl}/${user._id}/updateUser`,
-                    user.favoriteCharacters.push(
-                        character.id,
-                        character.name,
-                        character.description
-                    ),
+                    `${baseUrl}/${user._id}/updateUser/addFavoriteCharacter`,
+                    data,
                     { headers: { "x-auth-token": localStorage.getItem("token") } }
                 )
                 .then((res) => {
@@ -33,7 +37,8 @@ const CharacterCard = ( {character} ) => {
     return (
         
         <div className='characterCard'>
-            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt="character" />
+            {/*<img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt="character" />*/}
+            <img src={characterImage} alt="character" />
             <div className="characterCardInfo">
                 <p className="">Marvel ID: {character.id}</p>
                 <p className="">Name: {character.name}</p>

@@ -5,11 +5,12 @@ import './FavoriteCharacters.css';
 
 const FavoriteCharacters = ( {character} ) => {
     const { user } = useContext(AuthContext);
+    const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     return (
         
         <div className='characterCard'>
-            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt="character" />
+            <img src={characterImage} alt="character" />
             <div className="characterCardInfo">
                 <p className="">Marvel ID: {character.id}</p>
                 <p className="">Name: {character.name}</p>
