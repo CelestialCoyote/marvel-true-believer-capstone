@@ -2,25 +2,22 @@ import React from "react";
 import "./UserProfileInfo.css";
 
 
-const UserProfileInfo = (props) => {
+const UserProfileInfo = ({ user, setProfileEdit }) => {
     const handleEditShow = () => {
-        props.setProfileEdit(true);
+        setProfileEdit(true);
     }
 
     return (
 
         <div className="userProfileInfo">
             <p>
-                UserName: {props.user.userName}
+                UserName: {user.userName}
             </p>
             <p>
-                Gender: {props.user.gender}
+                Name: {user.firstName} {user.lastName}
             </p>
-            {/*<p>
-                        Age: {props.user.age}
-                    </p>*/}
             <p>
-                Location: {props.user.location}
+                Location: {user.location}
             </p>
             <button onClick={handleEditShow}>Edit Profile Information</button>
         </div>

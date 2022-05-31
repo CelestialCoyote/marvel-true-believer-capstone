@@ -36,6 +36,22 @@ const validateFavoriteCharacter = (favoriteCharacter) => {
     return schema.validate(favoriteCharacter);
 };
 
+//const favoriteCharacterSchema = mongoose.Schema({
+//    id: {
+//        type: String,
+//        unique: true,
+//        required: true,
+//    }
+//}, {timestamps: true});
+
+//const validateFavoriteCharacter = (favoriteCharacter) => {
+//    const schema = Joi.object({
+//        id: Joi.string().required(),
+//    });
+//
+//    return schema.validate(favoriteCharacter);
+//};
+
 const FavoriteCharacter = mongoose.model("FavoriteCharacer", favoriteCharacterSchema);
 
 

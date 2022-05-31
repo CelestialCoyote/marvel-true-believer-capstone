@@ -179,11 +179,11 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
 // PUT to update user favoriteCharacters array add a favorite.
 router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) => {
     try {
-        const { error } = validateFavoriteCharacter(req.body);
-        if (error)
-            return res
-                .status(400)
-                .send(`Body for favoriteCharacter not valid! ${error}`);
+        //const { error } = validateFavoriteCharacter(req.body);
+        //if (error)
+        //    return res
+        //        .status(400)
+        //        .send(`Body for favoriteCharacter not valid! ${error}`);
 
         let user = await User.findById(req.params.userID);
         if (!user)

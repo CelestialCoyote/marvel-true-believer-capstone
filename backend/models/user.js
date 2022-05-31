@@ -47,7 +47,7 @@ const userSchema = mongoose.Schema({
         { type: mongoose.Types.ObjectId }
     ],
     favoriteCharacters: [
-        { type: favoriteCharacterSchema }
+        { type: Object }
     ],
     favoriteComics: [
         {  }
@@ -68,6 +68,7 @@ userSchema.methods.generateAuthToken = function () {
             lastName: this.lastName,
             location: this.location,
             posts: this.posts,
+            favoriteCharacters: this.favoriteCharacters
         },
         process.env.JWT_SECRET
     );

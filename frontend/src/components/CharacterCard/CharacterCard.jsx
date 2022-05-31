@@ -11,18 +11,21 @@ const CharacterCard = ( {character} ) => {
     const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     const addToFavoriteCharacters = async () => {
-        const data = {
-            marvelID: `${character.id}`,
-            marvelName: `${character.name}`,
-            marvelImage: `${characterImage}`,
-            marvelDescription: `${character.description}`
-        };
+        //const data = {
+        //    marvelID: `${character.id}`,
+        //    marvelName: `${character.name}`,
+        //    marvelImage: `${characterImage}`,
+        //    marvelDescription: `${character.description}`
+        //};
+
+        console.log('CharacterToAdd: ', character);
 
         try {
             await axios
                 .put(
                     `${baseUrl}/${user._id}/updateUser/addFavoriteCharacter`,
-                    data,
+                    //data,
+                    character,
                     { headers: { "x-auth-token": localStorage.getItem("token") } }
                 )
                 .then((res) => {
@@ -37,7 +40,6 @@ const CharacterCard = ( {character} ) => {
     return (
         
         <div className='characterCard'>
-            {/*<img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt="character" />*/}
             <img src={characterImage} alt="character" />
             <div className="characterCardInfo">
                 <p className="">Marvel ID: {character.id}</p>
