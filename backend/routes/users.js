@@ -176,7 +176,7 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
     }
 });
 
-// PUT to update user information by ID.
+// PUT to update user favoriteCharacters array add a favorite.
 router.put("/:userID/updateUser/addFavoriteCharacter", [auth], async (req, res) => {
     try {
         const { error } = validateFavoriteCharacter(req.body);

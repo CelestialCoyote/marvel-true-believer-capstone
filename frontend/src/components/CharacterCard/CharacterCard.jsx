@@ -12,10 +12,10 @@ const CharacterCard = ( {character} ) => {
 
     const addToFavoriteCharacters = async () => {
         const data = {
-            marvelID: character.id,
-            marvelName: character.name,
-            marvelImage: character.characterImage,
-            marvelDescription: character.description
+            marvelID: `${character.id}`,
+            marvelName: `${character.name}`,
+            marvelImage: `${characterImage}`,
+            marvelDescription: `${character.description}`
         };
 
         try {
@@ -30,7 +30,7 @@ const CharacterCard = ( {character} ) => {
                     setUser(jwtDecode(localStorage.getItem("token")));
                 });
         } catch (error) {
-            console.log(error);
+            console.log('Error from frontend', error);
         };
     };
 
