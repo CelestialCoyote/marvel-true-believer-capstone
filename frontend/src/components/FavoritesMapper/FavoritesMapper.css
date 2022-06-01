@@ -1,11 +1,11 @@
-.characterCardMapper {
+.favoritesMapper {
     border: 2px solid green;
     border-radius: 0.5em;
     flex-grow: 1;
     margin: 0.5em;
 }
 
-.characterCardMapper__ul {
+.favoritesMapper__ul {
     display: flex;
     flex-wrap: wrap;
     gap: 1.0em;
@@ -17,12 +17,12 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.characterCardMapper__ul::-webkit-scrollbar {
+.favoritesMapper__ul::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.characterCardMapper__ul {
+.favoritesMapper__ul {
     -ms-overflow-style: none;                   /* IE and Edge */
     scrollbar-width: none;                      /* Firefox */
 }

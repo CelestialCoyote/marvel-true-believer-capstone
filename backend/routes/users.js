@@ -138,7 +138,7 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
 
         user.userName = req.body.userName;
         user.firstName = req.body.firstName;
-        user.LastName = req.body.LastName;
+        user.lastName = req.body.lastName;
         user.location = req.body.location;
         await user.save();
 

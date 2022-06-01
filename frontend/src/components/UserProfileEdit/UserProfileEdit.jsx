@@ -105,11 +105,20 @@ const UserProfileEdit = (props) => {
                     />
                 </label>
                 <label>
-                    Gender:{" "}
+                    firstName:{" "}
                     <input
                         type="text"
-                        name="gender"
-                        value={formData.gender}
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                    />
+                </label>
+                <label>
+                    lastName:{" "}
+                    <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
                         onChange={handleInputChange}
                     />
                 </label>

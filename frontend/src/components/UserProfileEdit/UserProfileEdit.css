@@ -19,6 +19,7 @@
 
 .userProfileEditForm label {
     align-items: center;
+    color: var(--captainAmerica-white);
     display: flex;
     font-size: 1.0em;
 }

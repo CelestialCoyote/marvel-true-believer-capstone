@@ -47,7 +47,8 @@ const userSchema = mongoose.Schema({
         { type: mongoose.Types.ObjectId }
     ],
     favoriteCharacters: [
-        { type: favoriteCharacterSchema }
+        { type: Object }
+        //{ type: favoriteCharacterSchema }
     ],
     favoriteComics: [
         {}
@@ -81,8 +82,8 @@ const validateUser = (user) => {
         firstName: Joi.string(),
         lastName: Joi.string(),
         location: Joi.string(),
-        posts: Joi.array(),
-        favoriteCharacters: Joi.array()
+        //posts: Joi.array(),
+        //favoriteCharacters: Joi.array()
     });
 
     return schema.validate(user);

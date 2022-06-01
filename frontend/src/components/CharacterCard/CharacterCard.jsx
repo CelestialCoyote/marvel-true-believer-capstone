@@ -17,7 +17,8 @@ const CharacterCard = ( { character, setFavorite } ) => {
             await axios
                 .put(
                     `${BASE_USER_URL}/${user._id}/addFavoriteCharacter`,
-                    { marvelID: `${character.id}` },
+                    character,
+                    //{ marvelID: `${character.id}` },
                     { headers: { "x-auth-token": localStorage.getItem("token") } }
                 )
                 .then((res) => {

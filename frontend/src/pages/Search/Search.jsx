@@ -19,10 +19,12 @@ const Search = () => {
     const BASE_USER_URL = 'http://localhost:3015/api/users'
     const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
     const marvelAuth = generateMarvelAuthentication();
+    let requestReload = true
+
+    let favoritesData =[];
 
     const getUserFavoriteCharacters = async () => {
         let favorites = [];
-        let favoritesData =[];
         try {
             favorites = await axios
                 .get(
@@ -38,7 +40,7 @@ const Search = () => {
             try {
                 let comicData = await axios.get(`${BASE_MARVEL_URL}characters/${fav.marvelID}?${marvelAuth}`);
     
-                favoritesData.push(comicData.data.data.results);
+                favoritesData.push(comicData.data.data.results[0]);
             } catch (error) {
                 console.log(error.message);
             }
@@ -66,10 +68,13 @@ const Search = () => {
     //    const removeFromFavoriteCharacters = async () => {
     //
     //    };
+    
+//    if (favChars == null)
+ //       getUserFavoriteCharacters();
 
-    useEffect(() => {
-        getUserFavoriteCharacters();
-      }, [user]);
+    //useEffect(() => {
+    //    getUserFavoriteCharacters();
+    //  }, [user] );
 
     return (
 
@@ -80,15 +85,17 @@ const Search = () => {
                 searchText={searchText}
                 searchCharacters={searchCharacters}
             />
-            <div className="search__table">
-                <CharacterCardMapper
+            <CharacterCardMapper
                     characters={characters}
                 />
+            {/*<div className="search__table">
+                
                 <FavoriteCharacterList
-                    //favorites={favorites}
+                    favorites={favoritesData}
+                    //favorites={favChars}
                     //removeFavChar={removeFromFavoriteCharacters}
                 />
-            </div>
+            </div>*/}
 
         </div>
 
