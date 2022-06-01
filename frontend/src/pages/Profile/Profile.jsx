@@ -11,7 +11,7 @@ const Profile = () => {
     return (
         <div className="profile">
             <UserProfileCard user={user} />
-            <CharacterCardMapper characters={user.favoriteCharacters} />
+            {/*<CharacterCardMapper characters={user.favoriteCharacters} />*/}
         </div>
     );
 };

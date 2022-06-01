@@ -202,7 +202,7 @@ router.get("/:userID/getFavoriteCharacters", [auth], async (req, res) => {
     }
 });
 
-// PUT to add a favorite character to favoriteCharacters array.
+// PUT to add a favorite character to the user's favoriteCharacters array.
 router.put("/:userID/addFavoriteCharacter", [auth], async (req, res) => {
     try {
         let user = await User.findById(req.params.userID);
@@ -227,16 +227,16 @@ router.put("/:userID/addFavoriteCharacter", [auth], async (req, res) => {
     }
 });
 
-// PUT to update user favoriteCharacters array add a favorite.
-router.put("/:userID/removeFavoriteCharacter/:marvelID", [auth], async (req, res) => {
+// PUT to remove a favorite character from the user's favoriteCharacters array.
+router.put("/:userID/removeFavoriteCharacter", [auth], async (req, res) => {
     try {
         let user = await User.findById(req.params.userID);
+        console.log('req.body: ', req.body);
         if (!user)
             return res
                 .status(400)
                 .send(`User with ObjectId ${req.params.userID} does not exist.`);
-        user.favoriteCharacters.splice(user.favoriteCharacters.indexOf(marvelID._id), 1);
-        //user.favoriteCharacters.push(req.body);
+        user.favoriteCharacters.remove(user.favoriteCharacters.find(el => el.marvelID == req.body.marvelID))
         await user.save();
 
         const token = user.generateAuthToken();
