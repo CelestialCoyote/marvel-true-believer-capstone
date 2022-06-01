@@ -67,8 +67,6 @@ userSchema.methods.generateAuthToken = function () {
             firstName: this.firstName,
             lastName: this.lastName,
             location: this.location,
-            posts: this.posts,
-            favoriteCharacters: this.favoriteCharacters
         },
         process.env.JWT_SECRET
     );
