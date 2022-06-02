@@ -1,0 +1,6 @@
+.statistics {
+    background-color: blueviolet;
+    display: flex;
+    flex-grow: 1;
+    padding-top: 5.0em;
+}
