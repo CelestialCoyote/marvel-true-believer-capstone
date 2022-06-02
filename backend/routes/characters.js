@@ -9,16 +9,26 @@ const auth = require('../middleware/auth');
 
 // GET all character likes.
 router.get('/', async (req, res) => {
+    const characterData = [["Character Name", "likes", "id"]];
+
     try {
         let characters = await Character.find();
         if (!characters)
             return res
                 .status(400)
                 .send('No characters in this collection.');
+        
+        characters.map(like => {
+            characterData.push([
+                like.marvelName,
+                like.likes,
+                like.marvelID
+            ]);
+        });
 
         return res
             .status(200)
-            .send(characters);
+            .send(characterData);
     } catch (error) {
         return res
             .status(500)

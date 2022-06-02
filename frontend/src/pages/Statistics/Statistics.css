@@ -1,6 +1,8 @@
 .statistics {
+    align-items: center;
     background-color: blueviolet;
     display: flex;
     flex-grow: 1;
+    justify-content: center;
     padding-top: 5.0em;
 }
