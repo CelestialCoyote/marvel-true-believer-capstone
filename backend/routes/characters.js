@@ -1,15 +1,16 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const { User } = require("../models/user");
+const { User } = require('../models/user');
+const { Character, validateCharacter } = require('../models/character');
 
-const auth = require("../middleware/auth");
+const auth = require('../middleware/auth');
 
 
 // GET all character likes.
 router.get('/', async (req, res) => {
     try {
-        let characters = await Characters.find();
+        let characters = await Character.find();
         if (!characters)
             return res
                 .status(400)
@@ -26,7 +27,29 @@ router.get('/', async (req, res) => {
 });
 
 // UPDATE a character like count, including text and likes.
-router.put("/:userID/updatePost/:postID", [auth], async (req, res) => {
+router.post("/characterLike/:marvelID", [auth], async (req, res) => {
+    try {
+        const { error } = validateCharacter(req.body);
+        if (error)
+            return res
+                .status(400)
+                .send(`Body for character not valid! ${error}`);
+
+        let newCharacter = new Character(req.body);
+        await newCharacter.save();
+
+        return res
+            .status(200)
+            .send(newCharacter);
+    } catch (error) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${error}`);
+    }
+});
+
+// UPDATE a character like count, including text and likes.
+router.post("/:userID/updatePost/:postID", [auth], async (req, res) => {
     try {
         const { error } = validatePost(req.body);
         if (error)
