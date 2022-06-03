@@ -18,8 +18,10 @@ import "./Statistics.css";
 
 export const options = {
     title: "Characters with most 'likes'.",
+    backgroundColor: "#a5a5ab",
+    //forceIFrame: true,
     pieSliceText: "label",
-    //sliceVisibilityThreshold: 0.05,
+    sliceVisibilityThreshold: 0.05,
     is3D: true,
 };
 
@@ -49,7 +51,7 @@ const Statistics = () => {
                 data={characterLikes}
                 options={options}
                 width={"512px"}
-                height={"512px"}
+                height={"384px"}
             />
 
         </div>

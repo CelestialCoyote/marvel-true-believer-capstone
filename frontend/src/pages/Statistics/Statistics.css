@@ -1,6 +1,6 @@
 .statistics {
     align-items: center;
-    background-color: blueviolet;
+    background-color: var(--captainAmerica-darkblue);
     display: flex;
     flex-grow: 1;
     justify-content: center;
