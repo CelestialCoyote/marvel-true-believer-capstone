@@ -63,11 +63,11 @@ const CharacterCard = ({ character, setFavorite }) => {
                 <div className="">
                     <button onClick={addToFavoriteCharacters}>Add to Favorites</button>
                     <button>Show Comics</button>
-                    <button >
+                    <button onClick={likeCharacter}>
                         <BiLike
                             color="var(--captainAmerica-darkBlue)"
                             fontSize="1.5em"
-                            onClick={likeCharacter}
+                            //onClick={likeCharacter}
                         />
                         Like
                     </button>

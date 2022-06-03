@@ -19,7 +19,7 @@ import "./Statistics.css";
 export const options = {
     title: "Characters with most 'likes'.",
     pieSliceText: "label",
-    sliceVisibilityThreshold: 0.05,
+    //sliceVisibilityThreshold: 0.05,
     is3D: true,
 };
 
