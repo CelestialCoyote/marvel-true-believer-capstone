@@ -1,8 +1,7 @@
-import axios from "axios";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthContext";
-//import { Avatar } from '@mui/material';
+import axios from 'axios';
+import { useContext } from 'react';
 import { BiLike } from 'react-icons/bi';
+import AuthContext from '../../context/AuthContext';
 import './Post.css';
 
 

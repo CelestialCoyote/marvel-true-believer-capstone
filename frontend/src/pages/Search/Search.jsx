@@ -47,8 +47,6 @@ const Search = () => {
         });
 
         setFavChars(favoritesData);
-        console.log('favoritesData: ', favoritesData);
-        console.log('favChars:', favChars);
     };
 
     const searchCharacters = async () => {

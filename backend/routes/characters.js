@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+
+const { User } = require("../models/user");
 const { Character, validateCharacter } = require('../models/character');
+
 const auth = require('../middleware/auth');
 
 
@@ -34,8 +37,14 @@ router.get('/', async (req, res) => {
 });
 
 // POST to create a new character with like counter, or update an exist character's like count.
-router.post("/characterLike/:marvelID", [auth], async (req, res) => {
+router.post("/:userID/characterLike/:marvelID", [auth], async (req, res) => {
     try {
+        let user = await User.findById(req.params.userID);
+        if (!user)
+            return res
+                .status(400)
+                .send(`User with ObjectId ${req.params.userID} does not exist.`);
+
         const { error } = validateCharacter(req.body);
         if (error)
             return res
@@ -44,19 +53,20 @@ router.post("/characterLike/:marvelID", [auth], async (req, res) => {
 
         let character = await Character.find({ marvelID: { $in: req.params.marvelID } });
 
-        console.log('req.params.marvelID: ', req.params.marvelID);
-        console.log('character found: ', character);
         if (character.length == 0) {
             character = new Character(req.body);
             await character.save();
         } else if (character.length == 1) {
-            console.log('should add 1 to likes.', character[0].likes);
             character[0].likes = character[0].likes + 1;
             await character[0].save();
         }
 
+        const token = user.generateAuthToken();
+
         return res
             .status(200)
+            .header("x-auth-token", token)
+            .header("access-control-expose-headers", "x-auth-token")
             .send(character);
     } catch (error) {
         return res

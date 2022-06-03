@@ -3,7 +3,6 @@ import './CharacterCardMapper.css';
 
 
 const CharacterCardMapper = ({ characters }) => {
-    console.log('characters: ', characters);
 
     return (
 
