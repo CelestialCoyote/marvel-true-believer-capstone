@@ -55,14 +55,14 @@ const CharacterCard = ({ character, setFavorite }) => {
     return (
 
         <div className="characterCard">
-            <img src={characterImage} alt="character" />
-            <div className="characterCardInfo">
+            <img className="characterCard__imgage" src={characterImage} alt="character" />
+            <div className="characterCard__info">
                 <p className="">Marvel ID: {character.id}</p>
                 <p className="">Name: {character.name}</p>
-                <p className="">Description: {character.description}</p>
+                {/*<p className="">Description: {character.description}</p>*/}
                 <div className="">
                     <button onClick={addToFavoriteCharacters}>Add to Favorites</button>
-                    <button>Show Comics</button>
+                    <button>Show More</button>
                     <button onClick={likeCharacter}>
                         <BiLike
                             color="var(--captainAmerica-darkBlue)"

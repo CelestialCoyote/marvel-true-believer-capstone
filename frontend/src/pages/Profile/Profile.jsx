@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import UserProfileCard from '../../components/UserProfileCard/UserProfileCard';
-import FavoritesMapper from '../../components/FavoritesMapper/FavoritesMapper';
+import ProfileFavoritesMapper from '../../components/ProfileFavoritesMapper/ProfileFavoritesMapper';
 import './Profile.css';
 
 
@@ -27,7 +27,7 @@ const Profile = () => {
     return (
         <div className="profile">
             <UserProfileCard user={user} />
-            <FavoritesMapper characters={favData} />
+            <ProfileFavoritesMapper characters={favData} />
         </div>
     );
 };

@@ -7,14 +7,14 @@
     width: 20.0em;
 }
 
-.characterCard img {
+.characterCard__imgage {
     border-radius: 0.5em;
     height: 10.0em;
     margin: 0.5em;
     width: 10.0em;
 }
 
-.characterCardInfo {
+.characterCard__info {
     border: 1px solid orange;
     border-radius: 0.5em;
     color: var(--captainAmerica-white);

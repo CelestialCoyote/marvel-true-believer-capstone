@@ -1,7 +1,7 @@
 .profile {
     border: 2px solid yellow;
-    /*display: flex;*/
-    /*flex-direction: column;*/
+    display: flex;
+    flex-direction: column;
     height: 85vh;
     margin-top: 10vh;
 }

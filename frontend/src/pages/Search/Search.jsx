@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import MarvelSearch from '../../components/MarvelSearch/MarvelSearch';
-import CharacterCardMapper from '../../components/ChacterCardMapper/CharacterCardMapper';
+import SearchResultsMapper from '../../components/SearchResultsMapper/SearchResultsMapper';
 import FavoriteCharacterList from '../../components/FavoriteCharacterList/FavoriteCharacterList';
 import generateMarvelAuthentication from '../../marvelAPI/generateMarvelAuthentication';
 import AuthContext from '../../context/AuthContext';
@@ -21,7 +21,7 @@ const Search = () => {
     const marvelAuth = generateMarvelAuthentication();
     let requestReload = true
 
-    let favoritesData =[];
+    let favoritesData = [];
 
     const getUserFavoriteCharacters = async () => {
         let favorites = [];
@@ -39,7 +39,7 @@ const Search = () => {
         favorites.data.forEach(async fav => {
             try {
                 let comicData = await axios.get(`${BASE_MARVEL_URL}characters/${fav.marvelID}?${marvelAuth}`);
-    
+
                 favoritesData.push(comicData.data.data.results[0]);
             } catch (error) {
                 console.log(error.message);
@@ -66,9 +66,9 @@ const Search = () => {
     //    const removeFromFavoriteCharacters = async () => {
     //
     //    };
-    
-//    if (favChars == null)
- //       getUserFavoriteCharacters();
+
+    //    if (favChars == null)
+    //       getUserFavoriteCharacters();
 
     //useEffect(() => {
     //    getUserFavoriteCharacters();
@@ -83,17 +83,19 @@ const Search = () => {
                 searchText={searchText}
                 searchCharacters={searchCharacters}
             />
-            <CharacterCardMapper
+
+
+            <div className="search__table">
+                <SearchResultsMapper
                     characters={characters}
                 />
-            {/*<div className="search__table">
-                
+
                 <FavoriteCharacterList
                     favorites={favoritesData}
-                    //favorites={favChars}
-                    //removeFavChar={removeFromFavoriteCharacters}
+                //favorites={favChars}
+                //removeFavChar={removeFromFavoriteCharacters}
                 />
-            </div>*/}
+            </div>
 
         </div>
 

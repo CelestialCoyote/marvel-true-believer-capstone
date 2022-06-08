@@ -1,15 +1,14 @@
 import CharacterCard from '../CharacterCard/CharacterCard';
-import './FavoritesMapper.css';
+import './SearchResultsMapper.css';
 
 
-const FavoritesMapper = ({ characters }) => {
-    //console.log('characters from favorites mapper: ', characters);
+const SearchResultsMapper = ({ characters }) => {
 
     return (
 
-        <div className="favoritesMapper">
+        <div className="characterCardMapper">
 
-            <ul className="favoritesMapper__ul">
+            <ul className="characterCardMapper__ul">
                 {characters &&
                     characters.map(character =>
                         <li key={character.id}>
@@ -26,4 +25,4 @@ const FavoritesMapper = ({ characters }) => {
     );
 }
 
-export default FavoritesMapper;
+export default SearchResultsMapper;

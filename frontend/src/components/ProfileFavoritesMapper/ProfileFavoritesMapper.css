@@ -1,7 +1,6 @@
 .favoritesMapper {
     border: 2px solid green;
     border-radius: 0.5em;
-    /*flex-grow: 1;*/
     height: 60vh;
     margin: 0.5em;
     overflow-y: scroll;
@@ -12,10 +11,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.0em;
-    /*height: 100vh;*/
+    height: 55vh;
     list-style-type: none;
     margin: 2.0em 0;
-    /*overflow-y: scroll;*/
     padding: 0;
 }
 

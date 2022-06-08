@@ -1,7 +1,8 @@
 .favoriteCharacterList {
-    border: 1px solid orange;
+    border: 2px solid red;
     border-radius: 0.5em;
-    flex-grow: 1;
     float: right;
+    height: 70vh;
     margin: 0.5em;
+    width: 30%;
 }
