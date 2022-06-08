@@ -3,16 +3,13 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Comic Neue', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 body {
     background-color: #002d5c;
-    display: flex;
-    font-family: 'Comic Neue', sans-serif;
-    min-height: 100vh;
-    /*overflow: hidden;*/
     --marvelLogo-red: #ed1d24;
     --captainAmerica-darkblue: #002d5c;
     --captainAmerica-blue: #0000dd;
@@ -21,14 +18,7 @@ body {
     --captainAmerica-white: #f0f0f0;
 }
 
-#root {
-    display: flex;
-    flex-grow: 1;
-}
-
-.App {
+.app {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
 }

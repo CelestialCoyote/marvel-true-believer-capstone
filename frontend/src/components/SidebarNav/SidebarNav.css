@@ -2,40 +2,47 @@
     align-items: center;
     background-color: black;
     display: flex;
-    height: 4.5em;
+    height: 10hv;
     justify-content: flex-start;
     position: fixed;
     width: 100%;
 }
 
-.sidebarNav_menuBars {
+.sidebarNav__img {
+    height: 10vh;
+}
+
+.sidebarNav__menuBars {
     background: none;
-    font-size: 1.25em;
-    margin-left: 1.5em;
+    font-size: 3.5vh;
+    margin-left: 1.0em;
     margin-right: 2.0em;
 }
 
 .sidebarNav__title {
     color: var(--marvelLogo-red);
-    font-size: 2.5em;
+    font-size: 6vh;
+    font-weight: 600;
     margin-left: 0.5em;
 }
 
 .sidebarNav__logInOut {
+    align-items: center;
     background-color: black;
     border: 2px solid var(--marvelLogo-red);
     border-radius: 0.5em;
     color: var(--marvelLogo-red);
-    font-size: 1.0em;
-    height: 3.0em;
+    display: flex;
+    font-size: 3vh;
+    height: 6vh;
+    justify-content: center;
     margin-right: 2.5em;
-    padding: 0;
     position: absolute;
     right: 0;
-    width: 8.0em;
+    width: 15vh;
 }
 
-.nav-menu {
+.sidebarNav__menu {
     background-color: black;
     display: flex;
     height: 100vh;
@@ -45,45 +52,46 @@
     position: fixed;
     top: 0;
     transition: 850ms;
-    width: 12.0em;
+    width: 30vh;
+    /*width: 12.0em;*/
 }
 
-.nav-menu.active {
+.sidebarNav__menu.active {
     left: 0;
     transition: 350ms;
 }
 
-.nav-text {
+.sidebarNav__text {
     align-items: center;
     display: flex;
-    height: 4.0em;
+    height: 7.5vh;
     justify-content: flex-start;
     list-style: none;
     padding: 0.5em 0.0em 0.5em 1.0em;
 }
 
-.nav-text a {
+.sidebarNav__text a {
     align-items: center;
     border-radius: 0.5em;
     color: var(--marvelLogo-red);
     display: flex;
-    font-size: 1.25em;
+    font-size: 3.5vh;
     height: 100%;
     padding: 0 0.75em;
     text-decoration: none;
     width: 95%;
 }
 
-.nav-text a:hover {
+.sidebarNav__text a:hover {
     background-color: var(--captainAmerica-darkblue);
 }
 
-.nav-menu-items {
+.sidebarNav__menuItems {
     padding-top: 2.0em;
     width: 100%;
 }
 
-.nav-toggle {
+.sidebarNav__toggle {
     align-items: center;
     background-color: black;
     display: flex;
@@ -95,15 +103,3 @@
 span {
     margin-left: 1.5em;
 }
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-/*.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }*/
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-/*.sticky + .content {
-    padding-top: 60px;
-  }*/

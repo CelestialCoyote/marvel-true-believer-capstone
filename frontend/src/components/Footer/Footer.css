@@ -1,12 +1,15 @@
 footer {
+    align-items: center;
     background-color: black;
     bottom: 0;
     color: var(--captainAmerica-gray);
-    font-size: 0.8em;
-    height: 3.0em;
+    display: flex;
+    font-size: 2vh;
+    height: 5vh;
+    justify-content: center;
     left: 0;
     padding: 1.0em;
-    /*position: fixed;*/
+    position: fixed;
     text-align: center;
     width: 100%;
 }

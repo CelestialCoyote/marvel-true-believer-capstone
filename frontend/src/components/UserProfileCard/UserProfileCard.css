@@ -3,6 +3,7 @@
     border-radius: 0.5em;
     display:flex;
     flex-direction:row;
+    height: 20vh;
     justify-content: space-around;
     margin: 0.5em;
     padding: 1.0em;

@@ -1,8 +1,9 @@
 .statistics {
     align-items: center;
+    border: 2px solid yellow;
     background-color: var(--captainAmerica-darkblue);
     display: flex;
-    flex-grow: 1;
+    height: 85vh;
     justify-content: center;
-    padding-top: 5.0em;
+    margin-top: 10vh;
 }

@@ -1,4 +1,7 @@
 .profile {
-    flex-grow: 1;
-    padding-top: 5.0em;
+    border: 2px solid yellow;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    height: 85vh;
+    margin-top: 10vh;
 }

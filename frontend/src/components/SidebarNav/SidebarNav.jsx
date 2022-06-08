@@ -21,10 +21,10 @@ const SidebarNav = () => {
         <div>
             <IconContext.Provider value={{ color: "#ed1d24" }}>
                 <div className="sidebarNav">
-                    <Link to="#" className="sidebarNav_menuBars">
+                    <Link to="#" className="sidebarNav__menuBars">
                         <FaBars onClick={showSidebar} />
                     </Link>
-                    <img src={marvelLogo} alt='logo' />
+                    <img className="sidebarNav__img" src={marvelLogo} alt='logo' />
                     <i className="sidebarNav__title">True Believer!</i>
                     {user ? (
                         <button
@@ -42,10 +42,10 @@ const SidebarNav = () => {
                         </button>
                     )}
                 </div>
-                <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-                    <ul className="nav-menu-items" onClick={showSidebar}>
-                        <li className="navbar-toggle">
-                            <Link to="#" className="menu-bars">
+                <nav className={sidebar ? "sidebarNav__menu active" : "sidebarNav__menu"}>
+                    <ul className="sidebarNav__menuItems" onClick={showSidebar}>
+                        <li className="sidebarNav__toggle">
+                            <Link to="#" className="sidebarNav__menuBars">
                                 <AiOutlineClose />
                             </Link>
                         </li>

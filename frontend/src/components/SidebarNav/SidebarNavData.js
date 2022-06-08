@@ -10,24 +10,24 @@ export const SidebarNavData = [
         title: 'Home',
         path: '/',
         icon: <AiOutlineHome />,
-        className: 'nav-text'
+        className: 'sidebarNav__text'
     },
     {
         title: 'Profile',
         path: '/profile',
         icon: <CgProfile />,
-        className: 'nav-text'
+        className: 'sidebarNav__text'
     },
     {
         title: 'Search',
         path: '/search',
         icon: <BsSearch />,
-        className: 'nav-text'
+        className: 'sidebarNav__text'
     },
     {
         title: 'Statistics',
         path: '/statistics',
         icon: <BiStats />,
-        className: 'nav-text'
+        className: 'sidebarNav__text'
     }
 ];

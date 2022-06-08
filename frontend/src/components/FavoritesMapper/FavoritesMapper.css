@@ -1,28 +1,31 @@
 .favoritesMapper {
     border: 2px solid green;
     border-radius: 0.5em;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
+    height: 60vh;
     margin: 0.5em;
+    overflow-y: scroll;
 }
 
 .favoritesMapper__ul {
+    border: 2px solid orange;
     display: flex;
     flex-wrap: wrap;
     gap: 1.0em;
-    height: 100vh;
+    /*height: 100vh;*/
     list-style-type: none;
     margin: 2.0em 0;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     padding: 0;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.favoritesMapper__ul::-webkit-scrollbar {
+.favoritesMapper::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.favoritesMapper__ul {
+.favoritesMapper {
     -ms-overflow-style: none;                   /* IE and Edge */
     scrollbar-width: none;                      /* Firefox */
 }
