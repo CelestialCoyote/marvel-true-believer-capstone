@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import CharacterCard from '../../components/CharacterCard/CharacterCard';
+import React from 'react';
 import FavoriteCharacterCard from '../FavoriteCharacterCard/FavoriteCharacterCard';
 import './FavoriteCharacterList.css';
 

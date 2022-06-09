@@ -11,42 +11,22 @@ import './Search.css';
 
 
 const Search = () => {
-    const { user, setUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [searchText, setSearchText] = useState('');
     const [characters, setCharacters] = useState([]);
-    const [favChars, setFavChars] = useState([]);
+    const [favoritesData, setfavoritesData] = useState(null);
 
     const BASE_USER_URL = 'http://localhost:3015/api/users'
     const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
     const marvelAuth = generateMarvelAuthentication();
-    let requestReload = true
-
-    let favoritesData = [];
 
     const getUserFavoriteCharacters = async () => {
-        let favorites = [];
-        try {
-            favorites = await axios
-                .get(
+        let favorites = await axios.get(
                     `${BASE_USER_URL}/${user._id}/getFavoriteCharacters`,
                     { headers: { "x-auth-token": localStorage.getItem("token") } }
                 );
-            console.log('userFavorites: ', favorites.data);
-        } catch (error) {
-            console.log(error);
-        };
-
-        favorites.data.forEach(async fav => {
-            try {
-                let comicData = await axios.get(`${BASE_MARVEL_URL}characters/${fav.marvelID}?${marvelAuth}`);
-
-                favoritesData.push(comicData.data.data.results[0]);
-            } catch (error) {
-                console.log(error.message);
-            }
-        });
-
-        setFavChars(favoritesData);
+            setfavoritesData(favorites.data);
+            //console.log('favData from getUserFavoriteCharacters: ', favData);
     };
 
     const searchCharacters = async () => {
@@ -59,7 +39,6 @@ const Search = () => {
         } catch (error) {
             console.log(error.message);
         }
-
         //setCharacters(comicData.data.results);
     };
 
@@ -67,12 +46,9 @@ const Search = () => {
     //
     //    };
 
-    //    if (favChars == null)
-    //       getUserFavoriteCharacters();
-
-    //useEffect(() => {
-    //    getUserFavoriteCharacters();
-    //  }, [user] );
+    useEffect(() => {
+        getUserFavoriteCharacters();
+    }, [user]);
 
     return (
 

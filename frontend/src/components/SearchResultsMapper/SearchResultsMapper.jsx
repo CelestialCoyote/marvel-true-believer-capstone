@@ -6,9 +6,9 @@ const SearchResultsMapper = ({ characters }) => {
 
     return (
 
-        <div className="characterCardMapper">
+        <div className="searchResultsMapper">
 
-            <ul className="characterCardMapper__ul">
+            <ul className="searchResultsMapper__ul">
                 {characters &&
                     characters.map(character =>
                         <li key={character.id}>

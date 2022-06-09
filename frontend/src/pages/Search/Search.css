@@ -14,3 +14,14 @@
     margin: 0.5em;
     overflow-y: scroll;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.search__table::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.search__table {
+    -ms-overflow-style: none;                   /* IE and Edge */
+    scrollbar-width: none;                      /* Firefox */
+}

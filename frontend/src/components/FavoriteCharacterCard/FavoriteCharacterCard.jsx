@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdDeleteForever } from 'react-icons/md';
-//import './FavoriteCharacterCard.css';
+import './FavoriteCharacterCard.css';
 
 
 const FavoriteCharacterCard = ({ favorite, removeFromFavorites }) => {
@@ -8,14 +8,25 @@ const FavoriteCharacterCard = ({ favorite, removeFromFavorites }) => {
 
     return (
 
-        <div className="favor">
-            <img src={favoriteImage} alt="fav" />
-            <p className="">{favorite.name}</p>
-            <MdDeleteForever className="remove" onClick={() => { removeFromFavorites(favorite.id) }} />
+        <div className="favoriteCharacterCard">
+            <div className="favoriteCharacterCard__card">
+                <img src={favoriteImage} alt="fav" />
+                <p className="teamName">{favorite.name}</p>
+                <MdDeleteForever className="remove" onClick={() => { removeFromFavorites(favorite.id) }} />
+            </div>
         </div>
-        
+
+
     );
 };
 
 
 export default FavoriteCharacterCard;
+
+{/*<Row>
+    <Col className={style.teamFlex}>
+        <img src={hero.teamImage} alt='myTeam' />
+        <p className={style.teamName}>{hero.name}</p>
+        <MdDeleteForever className={style.remove} onClick={() => { removeFromMyTeam(hero.id) }} />
+    </Col>
+</Row>*/}
