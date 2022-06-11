@@ -17,7 +17,8 @@ const Search = () => {
     const [characters, setCharacters] = useState([]);
     const [favoritesData, setfavoritesData] = useState(null);
 
-    const BASE_USER_URL = 'http://localhost:3015/api/users'
+    const BASE_USER_URL = 'http://localhost:3015/api/users';
+    const BASE_CHARACTER_URL = `http://localhost:3015/api/characters`;
     const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
     const marvelAuth = generateMarvelAuthentication();
 
@@ -44,6 +45,24 @@ const Search = () => {
         //setCharacters(comicData.data.results);
     };
 
+    const addToFavorites = async (character) => {
+        console.log('CharacterToAdd: ', character.id);
+        try {
+            await axios
+                .put(
+                    `${BASE_USER_URL}/${user._id}/addFavoriteCharacter`,
+                    character,
+                    { headers: { "x-auth-token": localStorage.getItem("token") } }
+                )
+                .then((res) => {
+                    localStorage.setItem("token", res.headers["x-auth-token"]);
+                    setUser(jwtDecode(localStorage.getItem("token")));
+                });
+        } catch (error) {
+            console.log('Error from frontend', error);
+        };
+    };
+
     const removeFromFavorites = async (id) => {
         try {
             await axios
@@ -59,20 +78,23 @@ const Search = () => {
         } catch (error) {
             console.log('Error from frontend', error);
         };
+    };
 
-//        const newFavoritesList = favoritesData;
-//
-//        const indexOfObject = newFavoritesList.findIndex(object => {
-//            return object.id === id;
-//        });
-//
-//        newFavoritesList.splice(indexOfObject, 1);
-//        setfavoritesData(newFavoritesList);
-//
-//        console.log('currentFavoritesList: ', favoritesData);
-//        console.log('remove from list:', id);
-//        console.log('newFavoritesList: ', newFavoritesList);
-
+    const likeCharacter = async (character) => {
+        try {
+            await axios
+                .post(
+                    `${BASE_CHARACTER_URL}/${user._id}/characterLike/${character.id}`,
+                    { marvelID: `${character.id}`, marvelName: `${character.name}`, likes: 1 },
+                    { headers: { "x-auth-token": localStorage.getItem("token") } }
+                )
+                .then((res) => {
+                    localStorage.setItem("token", res.headers["x-auth-token"]);
+                    setUser(jwtDecode(localStorage.getItem("token")));
+                });
+        } catch (error) {
+            console.log('Error from frontend', error);
+        };
     };
 
     useEffect(() => {
@@ -92,6 +114,8 @@ const Search = () => {
             <div className="search__table">
                 <SearchResultsMapper
                     characters={characters}
+                    addToFavorites={addToFavorites}
+                    likeCharacter={likeCharacter}
                 />
 
                 <FavoriteCharacterList

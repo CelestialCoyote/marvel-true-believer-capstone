@@ -4,7 +4,6 @@ import './FavoriteCharacterList.css';
 
 
 const FavoriteCharacterList = ({ favorites, removeFromFavorites }) => {
-    console.log('favorites from FavoriteCharacterList: ', favorites);
 
     return (
 

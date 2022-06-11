@@ -2,7 +2,7 @@ import CharacterCard from '../CharacterCard/CharacterCard';
 import './SearchResultsMapper.css';
 
 
-const SearchResultsMapper = ({ characters }) => {
+const SearchResultsMapper = ({ characters, addToFavorites, likeCharacter }) => {
 
     return (
 
@@ -14,6 +14,8 @@ const SearchResultsMapper = ({ characters }) => {
                         <li key={character.id}>
                             <CharacterCard
                                 character={character}
+                                addToFavorites={addToFavorites}
+                                likeCharacter={likeCharacter}
                             />
                         </li>
                     )
