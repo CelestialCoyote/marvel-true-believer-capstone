@@ -231,12 +231,12 @@ router.put("/:userID/addFavoriteCharacter", [auth], async (req, res) => {
 router.put("/:userID/removeFavoriteCharacter", [auth], async (req, res) => {
     try {
         let user = await User.findById(req.params.userID);
-        console.log('req.body: ', req.body);
+        //console.log('req.body: ', req.body);
         if (!user)
             return res
                 .status(400)
                 .send(`User with ObjectId ${req.params.userID} does not exist.`);
-        user.favoriteCharacters.remove(user.favoriteCharacters.find(el => el.marvelID == req.body.marvelID))
+        user.favoriteCharacters.remove(user.favoriteCharacters.find(el => el.id == req.body.marvelID))
         await user.save();
 
         const token = user.generateAuthToken();

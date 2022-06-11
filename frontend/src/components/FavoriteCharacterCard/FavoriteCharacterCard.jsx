@@ -11,8 +11,11 @@ const FavoriteCharacterCard = ({ favorite, removeFromFavorites }) => {
         <div className="favoriteCharacterCard">
             <div className="favoriteCharacterCard__card">
                 <img src={favoriteImage} alt="fav" />
-                <p className="teamName">{favorite.name}</p>
-                <MdDeleteForever className="remove" onClick={() => { removeFromFavorites(favorite.id) }} />
+                <div className="favoriteCharacterCard__name">{favorite.name}</div>
+                <MdDeleteForever
+                    className="favoriteCharacterCard__remove"
+                    onClick={() => { removeFromFavorites(favorite.id) }}
+                />
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import MarvelSearch from '../../components/MarvelSearch/MarvelSearch';
 import SearchResultsMapper from '../../components/SearchResultsMapper/SearchResultsMapper';
 import FavoriteCharacterList from '../../components/FavoriteCharacterList/FavoriteCharacterList';
@@ -11,7 +12,7 @@ import './Search.css';
 
 
 const Search = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const [searchText, setSearchText] = useState('');
     const [characters, setCharacters] = useState([]);
     const [favoritesData, setfavoritesData] = useState(null);
@@ -20,13 +21,14 @@ const Search = () => {
     const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
     const marvelAuth = generateMarvelAuthentication();
 
+
     const getUserFavoriteCharacters = async () => {
         let favorites = await axios.get(
-                    `${BASE_USER_URL}/${user._id}/getFavoriteCharacters`,
-                    { headers: { "x-auth-token": localStorage.getItem("token") } }
-                );
-            setfavoritesData(favorites.data);
-            //console.log('favData from getUserFavoriteCharacters: ', favData);
+            `${BASE_USER_URL}/${user._id}/getFavoriteCharacters`,
+            { headers: { "x-auth-token": localStorage.getItem("token") } }
+        );
+        setfavoritesData(favorites.data);
+        //console.log('favData from getUserFavoriteCharacters: ', favData);
     };
 
     const searchCharacters = async () => {
@@ -42,9 +44,36 @@ const Search = () => {
         //setCharacters(comicData.data.results);
     };
 
-    //    const removeFromFavoriteCharacters = async () => {
-    //
-    //    };
+    const removeFromFavorites = async (id) => {
+        try {
+            await axios
+                .put(
+                    `${BASE_USER_URL}/${user._id}/removeFavoriteCharacter`,
+                    { marvelID: `${id}` },
+                    { headers: { "x-auth-token": localStorage.getItem("token") } }
+                )
+                .then((res) => {
+                    localStorage.setItem("token", res.headers["x-auth-token"]);
+                    setUser(jwtDecode(localStorage.getItem("token")));
+                });
+        } catch (error) {
+            console.log('Error from frontend', error);
+        };
+
+//        const newFavoritesList = favoritesData;
+//
+//        const indexOfObject = newFavoritesList.findIndex(object => {
+//            return object.id === id;
+//        });
+//
+//        newFavoritesList.splice(indexOfObject, 1);
+//        setfavoritesData(newFavoritesList);
+//
+//        console.log('currentFavoritesList: ', favoritesData);
+//        console.log('remove from list:', id);
+//        console.log('newFavoritesList: ', newFavoritesList);
+
+    };
 
     useEffect(() => {
         getUserFavoriteCharacters();
@@ -53,13 +82,12 @@ const Search = () => {
     return (
 
         <div className='search'>
-            {/*<button onClick={getUserFavoriteCharacters}>Axios favoriteCharacters</button>*/}
+
             <MarvelSearch
                 setSearchText={setSearchText}
                 searchText={searchText}
                 searchCharacters={searchCharacters}
             />
-
 
             <div className="search__table">
                 <SearchResultsMapper
@@ -68,8 +96,7 @@ const Search = () => {
 
                 <FavoriteCharacterList
                     favorites={favoritesData}
-                //favorites={favChars}
-                //removeFavChar={removeFromFavoriteCharacters}
+                    removeFromFavorites={removeFromFavorites}
                 />
             </div>
 
@@ -80,11 +107,3 @@ const Search = () => {
 
 
 export default Search;
-
-
-
-//const getFavoritesData = async () => {
-//    let marvelData = axios
-//        .all(favChar.map((favorite) => axios.get(`${BASE_MARVEL_URL}characters/${favorite.marvelID}?${marvelAuth}`)))
-//        .then((data) => console.log(data));
-//}

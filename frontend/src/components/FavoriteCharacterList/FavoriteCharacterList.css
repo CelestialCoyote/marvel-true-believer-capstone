@@ -1,8 +1,32 @@
 .favoriteCharacterList {
     border: 2px solid red;
     border-radius: 0.5em;
-    float: right;
+    display: flex;
+    flex-direction: column;
     height: 70vh;
     margin: 0.5em;
-    width: 30%;
+    width: 20%;
+}
+
+.favoriteCharacterList__title {
+    color: var(--captainAmerica-gray);
+    font-size: 2vh;
+    margin-bottom: 1.0em;
+    margin-top: 1.0em;
+    text-align: center;
+}
+
+.favoriteCharacterList__ul {
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.favoriteCharacterList__ul::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.favoriteCharacterList__ul {
+    -ms-overflow-style: none;                   /* IE and Edge */
+    scrollbar-width: none;                      /* Firefox */
 }

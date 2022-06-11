@@ -3,12 +3,14 @@ import FavoriteCharacterCard from '../FavoriteCharacterCard/FavoriteCharacterCar
 import './FavoriteCharacterList.css';
 
 
-const FavoriteCharacterList = ({ favorites }) => {
+const FavoriteCharacterList = ({ favorites, removeFromFavorites }) => {
     console.log('favorites from FavoriteCharacterList: ', favorites);
 
     return (
 
         <div className='favoriteCharacterList'>
+
+            <div className="favoriteCharacterList__title">Favorites List</div>
 
             <ul className="favoriteCharacterList__ul">
                 {favorites &&
@@ -16,7 +18,7 @@ const FavoriteCharacterList = ({ favorites }) => {
                         <li key={favorite.id}>
                             <FavoriteCharacterCard
                                 favorite={favorite}
-                                //removeFromFavorites={removeFromFavorites}
+                                removeFromFavorites={removeFromFavorites}
                             />
                         </li>
                     )
