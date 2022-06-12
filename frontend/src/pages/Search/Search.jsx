@@ -46,21 +46,27 @@ const Search = () => {
     };
 
     const addToFavorites = async (character) => {
-        console.log('CharacterToAdd: ', character.id);
-        try {
-            await axios
-                .put(
-                    `${BASE_USER_URL}/${user._id}/addFavoriteCharacter`,
-                    character,
-                    { headers: { "x-auth-token": localStorage.getItem("token") } }
-                )
-                .then((res) => {
-                    localStorage.setItem("token", res.headers["x-auth-token"]);
-                    setUser(jwtDecode(localStorage.getItem("token")));
-                });
-        } catch (error) {
-            console.log('Error from frontend', error);
-        };
+        const isFavorite = favoritesData.find(({ id }) => id === character.id);
+
+        if (!isFavorite) {
+            console.log('Add to favorites list.');
+            try {
+                await axios
+                    .put(
+                        `${BASE_USER_URL}/${user._id}/addFavoriteCharacter`,
+                        character,
+                        { headers: { "x-auth-token": localStorage.getItem("token") } }
+                    )
+                    .then((res) => {
+                        localStorage.setItem("token", res.headers["x-auth-token"]);
+                        setUser(jwtDecode(localStorage.getItem("token")));
+                    });
+            } catch (error) {
+                console.log('Error from frontend', error);
+            };
+        } else {
+            alert('Already in Favorites List.');
+        }
     };
 
     const removeFromFavorites = async (id) => {
