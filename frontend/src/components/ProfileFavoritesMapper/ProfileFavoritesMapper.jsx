@@ -2,7 +2,7 @@ import CharacterCard from '../CharacterCard/CharacterCard';
 import './ProfileFavoritesMapper.css';
 
 
-const FavoritesMapper = ({ characters }) => {
+const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails }) => {
     //console.log('characters from favorites mapper: ', characters);
 
     return (
@@ -15,6 +15,8 @@ const FavoritesMapper = ({ characters }) => {
                         <li key={character.id}>
                             <CharacterCard
                                 character={character}
+                                setFavoriteCharacter={setFavoriteCharacter}
+                                setCharacterDetails={setCharacterDetails}
                             />
                         </li>
                     )

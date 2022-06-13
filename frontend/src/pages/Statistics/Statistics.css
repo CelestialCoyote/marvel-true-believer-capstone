@@ -1,6 +1,5 @@
 .statistics {
     align-items: center;
-    border: 2px solid yellow;
     background-color: var(--captainAmerica-darkblue);
     display: flex;
     height: 85vh;

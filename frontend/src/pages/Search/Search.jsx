@@ -23,15 +23,6 @@ const Search = () => {
     const marvelAuth = generateMarvelAuthentication();
 
 
-    const getUserFavoriteCharacters = async () => {
-        let favorites = await axios.get(
-            `${BASE_USER_URL}/${user._id}/getFavoriteCharacters`,
-            { headers: { "x-auth-token": localStorage.getItem("token") } }
-        );
-        setfavoritesData(favorites.data);
-        //console.log('favData from getUserFavoriteCharacters: ', favData);
-    };
-
     const searchCharacters = async () => {
         let url = `${BASE_MARVEL_URL}/characters?nameStartsWith=${searchText}${marvelAuth}`;
 
@@ -42,7 +33,6 @@ const Search = () => {
         } catch (error) {
             console.log(error.message);
         }
-        //setCharacters(comicData.data.results);
     };
 
     const addToFavorites = async (character) => {
@@ -104,6 +94,14 @@ const Search = () => {
     };
 
     useEffect(() => {
+        const getUserFavoriteCharacters = async () => {
+            let favorites = await axios.get(
+                `${BASE_USER_URL}/${user._id}/getFavoriteCharacters`,
+                { headers: { "x-auth-token": localStorage.getItem("token") } }
+            );
+            setfavoritesData(favorites.data);
+        };
+
         getUserFavoriteCharacters();
     }, [user]);
 

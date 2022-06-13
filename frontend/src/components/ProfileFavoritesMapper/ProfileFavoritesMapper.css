@@ -1,19 +1,15 @@
 .favoritesMapper {
-    border: 2px solid green;
-    border-radius: 0.5em;
-    height: 60vh;
+    border-top: 4px solid var(--captainAmerica-gray);
+    height: 52vh;
     margin: 0.5em;
     overflow-y: scroll;
 }
 
 .favoritesMapper__ul {
-    border: 2px solid orange;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.0em;
-    height: 55vh;
+    justify-content: space-between;
     list-style-type: none;
-    margin: 2.0em 0;
     padding: 0;
 }
 

@@ -15,6 +15,7 @@ import Register from './pages/Register/Register';
 import './App.css';
 
 
+
 function App() {
 
     return (
@@ -30,7 +31,6 @@ function App() {
                         </PrivateRoute>
                     }
                 />
-                {/*<Route path="/" exact element={<Home />} />*/}
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/statistics" element={<Statistics />} />

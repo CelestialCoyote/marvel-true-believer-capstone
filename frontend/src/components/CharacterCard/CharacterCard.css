@@ -4,21 +4,44 @@
     display: flex;
     flex-direction: row;
     margin: 1.0em;
-    width: 20.0em;
+    width: 25.0em;
 }
 
 .characterCard__imgage {
     border-radius: 0.5em;
-    height: 10.0em;
+    height: 15.0em;
     margin: 0.5em;
-    width: 10.0em;
+    width: 60%;
 }
 
 .characterCard__info {
     border: 1px solid orange;
     border-radius: 0.5em;
     color: var(--captainAmerica-white);
+    display: flex;
+    flex-direction: column;
     font-size: 0.75em;
+    justify-content:space-between;
     margin: 0.5em;
-    width: 50%;
+    width: 40%;
+}
+
+.characterCard__text {
+    margin: 0.5em 1.0em;
+}
+
+.characterCard__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: 2.0em;
+}
+
+.characterCard__button {
+    background-color: var(--captainAmerica-gray);
+    border: 1px solid red;
+    border-radius: 0.5em;
+    color: var(--captainAmerica-red);
+    height: 2.0em;
+    margin: 0.5em 0.25em;
 }

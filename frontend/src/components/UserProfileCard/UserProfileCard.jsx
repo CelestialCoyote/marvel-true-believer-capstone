@@ -11,14 +11,17 @@ const UserProfileCard = (props) => {
 
         <div className="userProfileCard">
 
-            <img
-                className="profile_pic"
-                alt="profile pic"
-                src={`http://localhost:3015/${props.user.image}`}
-            />
+            <div className="userProfileCard_imageDiv">
+                <img
+                    className="userProfileCard_image"
+                    alt="profile pic"
+                    src={`http://localhost:3015/${props.user.image}`}
+                />
+            </div>
+
 
             {!profileEdit && <UserProfileInfo user={props.user} setProfileEdit={setProfileEdit} />}
-            {profileEdit && <UserProfileEdit  setProfileEdit={setProfileEdit} />}
+            {profileEdit && <UserProfileEdit setProfileEdit={setProfileEdit} />}
         </div>
 
     );

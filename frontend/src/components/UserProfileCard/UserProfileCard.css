@@ -1,9 +1,7 @@
-.userProfileCard{
-    border: 2px solid orange;
-    border-radius: 0.5em;
-    display:flex;
-    flex-direction:row;
-    height: 20vh;
+.userProfileCard {
+    display: flex;
+    flex-direction: row;
+    height: 30vh;
     justify-content: space-around;
     margin: 0.5em;
     padding: 1.0em;
@@ -13,17 +11,25 @@
     border: 1px solid purple;
     border-radius: 0.5em;
     padding: 1.0em;
+    width: 50%;
 }
 
-.userInfo{
+.userInfo {
     border: 1px solid blue;
     border-radius: 0.5em;
     padding: 1.0em;
 }
 
-.profile_pic{
-    border-radius: 7.5em;
-    height: 12.0em;
-    width: 12.0em;
-    padding: 0.5em;
+.userProfileCard_imageDiv {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+
+.userProfileCard_image {
+    border-radius: 50%;
+    height: 100%;
 }
