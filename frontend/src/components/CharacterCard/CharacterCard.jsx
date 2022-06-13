@@ -3,7 +3,7 @@ import { BiLike } from 'react-icons/bi';
 import './CharacterCard.css';
 
 
-const CharacterCard = ({ character, addToFavorites, likeCharacter, setFavoriteCharacter, setCharacterDetails }) => {
+const CharacterCard = ({ character, addToFavorites, likeCharacter, setFavoriteCharacter, setCharacterDetails, favoritesButton }) => {
     const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     return (
@@ -18,12 +18,12 @@ const CharacterCard = ({ character, addToFavorites, likeCharacter, setFavoriteCh
                 </div>
 
                 <div className="characterCard__actions">
-                    <button
+                    {favoritesButton && <button
                         className="characterCard__button"
                         onClick={() => { addToFavorites(character) }}
                     >
                         Add to Favorites
-                    </button>
+                    </button>}
                     <button
                         className="characterCard__button"
                         onClick={() => {

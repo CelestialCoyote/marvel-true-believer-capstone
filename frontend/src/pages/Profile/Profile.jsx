@@ -13,6 +13,7 @@ const Profile = () => {
     const [favoritesData, setFavoritesData] = useState(null);
     const [characterDetails, setCharacterDetails] = useState(false);
     const [favoriteCharacter, setFavoriteCharacter] = useState();
+    const [favoritesButton] = useState(false);
 
 
     useEffect(() => {
@@ -36,11 +37,14 @@ const Profile = () => {
                     characters={favoritesData}
                     setFavoriteCharacter={setFavoriteCharacter}
                     setCharacterDetails={setCharacterDetails}
+                    favoritesButton={favoritesButton}
                 />}
+            
             {characterDetails &&
                 <CharacterDetails
                     character={favoriteCharacter}
                     setCharacterDetails={setCharacterDetails}
+                    //getComic={getComic}
                 />}
         </div>
     );

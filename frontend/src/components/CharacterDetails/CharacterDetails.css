@@ -1,3 +1,100 @@
-.characterDetails__imgage {
-    height: 20vh;
+.characterDetails {
+    border-top: 4px solid var(--captainAmerica-gray);
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    padding: 1.0em;
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.characterDetails::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.characterDetails {
+    -ms-overflow-style: none;                   /* IE and Edge */
+    scrollbar-width: none;                      /* Firefox */
+}
+
+.characterDetails__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.characterDetails__character {
+    display: flex;
+    flex-direction: row;
+    width: 75%
+}
+
+.characterDetails__image {
+    height: 40vh;
+    margin-right: 2.0em;
+}
+
+.characterDetails__text {
+    color: var(--captainAmerica-white);
+    font-size: 1.5em;
+}
+
+.characterDetails__button {
+    background-color: var(--captainAmerica-gray);
+    border: 1px solid red;
+    border-radius: 0.5em;
+    color: var(--captainAmerica-red);
+    font-size: 1.0em;
+    height: 3.0em;
+    margin: 0.5em 0.25em;
+    width: 6.0em
+}
+
+.comics__header {
+    color: var(--captainAmerica-white);
+    font-size: 2.0em;
+    margin-top: 1.5em;
+}
+
+.comics__ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-top: 1.5em;
+    padding: 0;
+}
+
+.comicCard {
+    display: flex;
+    flex-direction: row;
+    margin: 1.0em;
+    width: 30.0em
+}
+
+.comicCard__imgage {
+    height: 30vh;
+}
+
+.comic__text {
+    color: var(--captainAmerica-white);
+}
+
+.comic__description {
+    color: var(--captainAmerica-white);
+    height: 22vh;
+    margin: 0.75em 0;
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.comic__description::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.comic__description {
+    -ms-overflow-style: none;                   /* IE and Edge */
+    scrollbar-width: none;                      /* Firefox */
 }

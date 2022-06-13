@@ -1,7 +1,5 @@
 .searchResultsMapper {
-    border: 2px solid orange;
-    border-radius: 0.5em;
-    height: 70vh;
+    border-right: 4px solid var(--captainAmerica-gray);
     margin: 0.5em;
     overflow-y: scroll;
     width: 80%;
@@ -10,8 +8,7 @@
 .searchResultsMapper__ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.0em;
-    /*height: 100vh;*/
+    justify-content: space-between;
     list-style-type: none;
     margin: 2.0em 0;
     
