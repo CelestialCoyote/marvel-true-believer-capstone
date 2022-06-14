@@ -34,9 +34,23 @@ const CharacterDetails = ({ character, setCharacterDetails }) => {
                 <div className="characterDetails__character">
                     <img className="characterDetails__image" src={characterImage} alt="character" />
                     <div className="characterDetails__info">
-                        <p className="characterDetails__text">Marvel ID: {character.id}</p>
-                        <p className="characterDetails__text">Name: {character.name}</p>
-                        <p className="characterDetails__text">Description: {character.description}</p>
+                        <p
+                            className="characterDetails__text">
+                            <span className="heading">Marvel ID: </span>
+                            {character.id}
+                        </p>
+                        <p
+                            className="characterDetails__text">
+                            <span className="heading">Name: </span>
+                            {character.name}
+                        </p>
+                        <div className="characterDetails__description">
+                            <p
+                                className="characterDetails__text">
+                                <span className="heading">Description: </span>
+                                {character.description}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -65,12 +79,28 @@ const CharacterDetails = ({ character, setCharacterDetails }) => {
                                     alt="comic"
                                 />
                                 <div className="comicCard__info">
-                                    <p className="comic__text">Title: {comic.title}</p>
-                                    <p className="comic__text">Issue: {comic.issueNumber}</p>
+                                    <p
+                                        className="comic__text">
+                                        <span className="heading">Title: </span>
+                                        {comic.title}
+                                    </p>
+                                    <p
+                                        className="comic__text">
+                                        <span className="heading">Issue: </span>
+                                        {comic.issueNumber}
+                                    </p>
                                     <div className="comic__description">
-                                        <p className="comic__text">Description: {comic.description}</p>
+                                        <p
+                                            className="comic__text">
+                                            <span className="heading">Description: </span>
+                                            {comic.description}
+                                        </p>
                                     </div>
-                                    <p className="comic__text">Page Count: {comic.pageCount}</p>
+                                    <p
+                                        className="comic__text">
+                                        <span className="heading">Page Count: </span>
+                                        {comic.pageCount}
+                                    </p>
                                 </div>
                             </div>
                         </li>

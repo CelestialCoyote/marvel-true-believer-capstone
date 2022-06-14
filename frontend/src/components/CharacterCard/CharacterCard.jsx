@@ -3,32 +3,39 @@ import { BiLike } from 'react-icons/bi';
 import './CharacterCard.css';
 
 
-const CharacterCard = ({ character, addToFavorites, likeCharacter, setFavoriteCharacter, setCharacterDetails, favoritesButton }) => {
+const CharacterCard = ({ character, addToFavorites, setCharacter, setCharacterDetails, likeCharacter }) => {
     const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     return (
 
         <div className="characterCard">
 
-            <img className="characterCard__imgage" src={characterImage} alt="character" />
-            <div className="characterCard__info">
-                <div className="characterCard__text">
-                    <p className="">Marvel ID: {character.id}</p>
-                    <p className="">Name: {character.name}</p>
+            <img className="characterCard__image" src={characterImage} alt="character" />
+            <div className="characterCard__container">
+                <div className="characterCard__info">
+                    <p
+                        className="characterCard__text">
+                        <span className="heading">Marvel ID: </span>
+                        {character.id}
+                    </p>
+                    <p
+                        className="characterCard__text">
+                        <span className="heading">Name: </span>
+                        {character.name}
+                    </p>
                 </div>
 
                 <div className="characterCard__actions">
-                    {favoritesButton && <button
+                    <button
                         className="characterCard__button"
                         onClick={() => { addToFavorites(character) }}
                     >
                         Add to Favorites
-                    </button>}
+                    </button>
                     <button
                         className="characterCard__button"
                         onClick={() => {
-                            //console.log('Character Object: ', character);
-                            setFavoriteCharacter(character);
+                            setCharacter(character);
                             setCharacterDetails(true);
                         }}
                     >

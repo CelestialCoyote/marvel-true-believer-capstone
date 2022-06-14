@@ -36,13 +36,15 @@ const Profile = () => {
                     characters={favoritesData}
                     setFavoriteCharacter={setFavoriteCharacter}
                     setCharacterDetails={setCharacterDetails}
-                />}
+                />
+            }
             
             {characterDetails &&
                 <CharacterDetails
                     character={favoriteCharacter}
                     setCharacterDetails={setCharacterDetails}
-                />}
+                />
+            }
         </div>
     );
 };

@@ -4,10 +4,9 @@ import jwtDecode from 'jwt-decode';
 import MarvelSearch from '../../components/MarvelSearch/MarvelSearch';
 import SearchResultsMapper from '../../components/SearchResultsMapper/SearchResultsMapper';
 import FavoriteCharacterList from '../../components/FavoriteCharacterList/FavoriteCharacterList';
+import CharacterDetails from '../../components/CharacterDetails/CharacterDetails';
 import generateMarvelAuthentication from '../../marvelAPI/generateMarvelAuthentication';
 import AuthContext from '../../context/AuthContext';
-//import { comicData } from '../../comicTestData/hulkTestData';
-//import { comicData, comicData } from '../../comicTestData/spiderTestData';
 import './Search.css';
 
 
@@ -15,7 +14,9 @@ const Search = () => {
     const { user, setUser } = useContext(AuthContext);
     const [searchText, setSearchText] = useState('');
     const [characters, setCharacters] = useState([]);
+    const [character, setCharacter] = useState();
     const [favoritesData, setfavoritesData] = useState(null);
+    const [characterDetails, setCharacterDetails] = useState(false);
 
     const BASE_USER_URL = 'http://localhost:3015/api/users';
     const BASE_CHARACTER_URL = `http://localhost:3015/api/characters`;
@@ -115,12 +116,24 @@ const Search = () => {
                 searchCharacters={searchCharacters}
             />
 
+
             <div className="search__table">
-                <SearchResultsMapper
-                    characters={characters}
-                    addToFavorites={addToFavorites}
-                    likeCharacter={likeCharacter}
-                />
+                {!characterDetails &&
+                    <SearchResultsMapper
+                        characters={characters}
+                        addToFavorites={addToFavorites}
+                        setCharacter={setCharacter}
+                        setCharacterDetails={setCharacterDetails}
+                        likeCharacter={likeCharacter}
+                    />
+                }
+
+                {characterDetails &&
+                    <CharacterDetails
+                        character={character}
+                        setCharacterDetails={setCharacterDetails}
+                    />
+                }
 
                 <FavoriteCharacterList
                     favorites={favoritesData}

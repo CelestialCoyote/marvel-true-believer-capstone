@@ -40,12 +40,30 @@
     font-size: 1.5em;
 }
 
+.characterDetails__description {
+    height: 32vh;
+    margin: 0.75em 0;
+    overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.characterDetails__description::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.characterDetails__description {
+    -ms-overflow-style: none;                   /* IE and Edge */
+    scrollbar-width: none;                      /* Firefox */
+}
+
 .characterDetails__button {
     background-color: var(--captainAmerica-gray);
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: 0.5em;
     color: var(--captainAmerica-red);
     font-size: 1.0em;
+    font-weight: bold;
     height: 3.0em;
     margin: 0.5em 0.25em;
     width: 6.0em
@@ -71,6 +89,10 @@
     flex-direction: row;
     margin: 1.0em;
     width: 30.0em
+}
+
+.comicCard__info {
+    margin-left: 1.0em;
 }
 
 .comicCard__imgage {

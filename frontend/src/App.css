@@ -22,3 +22,10 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.heading {
+    color: var(--captainAmerica-gray);
+    font-weight: 800;
+    margin-left: 0;
+    margin-right: 0.5em;
+}

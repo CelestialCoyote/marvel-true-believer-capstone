@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 0.5em;
+    margin: 1.5em;
 }
 
 .searchText {
-    background-color: lightgray;
+    background-color: var(--captainAmerica-gray);
     border: 2px solid red;
     border-radius: 0.5em;
     color: red;
@@ -16,15 +16,20 @@
     width: 50%;
 }
 
+.searchText:focus {
+    outline: none;
+}
+
 .searchText::placeholder {
-    color: gray;
+    color: #555;
 }
 
 .searchBar button {
-    background-color: lightgray;
+    background-color: var(--captainAmerica-gray);
     border: 2px solid red;
     border-radius: 0.5em;
-    color: red;
+    color: var(--captainAmerica-red);
     font-size: 1.5em;
+    font-weight: bold;
     width: 5.0em;
 }

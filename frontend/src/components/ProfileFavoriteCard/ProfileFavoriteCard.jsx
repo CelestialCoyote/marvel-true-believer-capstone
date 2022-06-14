@@ -10,18 +10,28 @@ const ProfileFavoriteCard = ({ character, addToFavorites, likeCharacter, setFavo
 
         <div className="profileFavoriteCard">
 
-            <img className="profileFavoriteCard__imgage" src={characterImage} alt="character" />
-            <div className="profileFavoriteCard__info">
-                <div className="profileFavoriteCard__text">
-                    <p className="">Marvel ID: {character.id}</p>
-                    <p className="">Name: {character.name}</p>
+            <img className="profileFavoriteCard__image" src={characterImage} alt="character" />
+            <div className="characterCard__info">
+
+            </div>
+            <div className="profileFavoriteCard__container">
+                <div className="profileFavoriteCard__info">
+                     <p
+                        className="characterCard__text">
+                        <span className="heading">Marvel ID: </span>
+                        {character.id}
+                    </p>
+                    <p
+                        className="characterCard__text">
+                        <span className="heading">Name: </span>
+                        {character.name}
+                    </p>
                 </div>
 
                 <div className="profileFavoriteCard__actions">
                     <button
                         className="profileFavoriteCard__button"
                         onClick={() => {
-                            //console.log('Character Object: ', character);
                             setFavoriteCharacter(character);
                             setCharacterDetails(true);
                         }}

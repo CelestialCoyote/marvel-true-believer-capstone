@@ -1,5 +1,4 @@
 .searchResultsMapper {
-    border-right: 4px solid var(--captainAmerica-gray);
     margin: 0.5em;
     overflow-y: scroll;
     width: 80%;
