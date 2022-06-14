@@ -6,7 +6,7 @@ import useCustomForm from '../../hooks/useCustomForm';
 import './UserProfileEdit.css';
 
 
-const UserProfileEdit = (props) => {
+const UserProfileEdit = ({ setProfileEdit }) => {
     const baseUrl = `http://localhost:3015/api/users`;
     const { user, setUser } = useContext(AuthContext);
     const defaultValues = {
@@ -75,7 +75,7 @@ const UserProfileEdit = (props) => {
                 .put(
                     `${baseUrl}/${user._id}/updateUserImage`,
                     form,
-                    { headers: { "x-auth-token": localStorage.getItem("token") }}
+                    { headers: { "x-auth-token": localStorage.getItem("token") } }
                 )
                 .then((res) => {
                     localStorage.setItem("token", res.headers["x-auth-token"]);
@@ -86,67 +86,125 @@ const UserProfileEdit = (props) => {
         }
     };
 
-    const handleEditShow = () => {
-        props.setProfileEdit(false);
-    }
-
     return (
 
         <div className="userProfileEditContainer">
-            <form className="userProfileEditForm" onSubmit={(event) => handleProfileUpdate(event)}>
-                <label>
-                    UserName:{" "}
-                    <input
-                        type="text"
-                        name="userName"
-                        placeholder="user name here."
-                        value={formData.userName}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label>
-                    firstName:{" "}
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label>
-                    lastName:{" "}
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label>
-                    Location:{" "}
-                    <input
-                        type="text"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <button type="submit">Update Profile</button>
+
+            <form
+                className="userProfileEditForm"
+                onSubmit={(event) => handleProfileUpdate(event)}
+            >
+                <div className="userProfileEditForm__userInfo">
+                    <div className="userProfileEditForm__field">
+                        <label className="userProfileEditForm__label" >
+                            UserName:{" "}
+                        </label>
+                        <input
+                            className="userProfileEditForm__input"
+                            type="text"
+                            name="userName"
+                            placeholder="user name here."
+                            value={formData.userName}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+
+                    <div className="userProfileEditForm__field">
+                        <label className="userProfileEditForm__label">
+                            firstName:{" "}
+                        </label>
+                        <input
+                            className="userProfileEditForm__input"
+                            type="text"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+
+                    <div className="userProfileEditForm__field">
+                        <label className="userProfileEditForm__label">
+                            lastName:{" "}
+                        </label>
+                        <input
+                            className="userProfileEditForm__input"
+                            type="text"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+
+                    <div className="userProfileEditForm__field">
+                        <label className="userProfileEditForm__label">
+                            Location:{" "}
+                        </label>
+                        <input
+                            className="userProfileEditForm__input"
+                            type="text"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleInputChange}
+                        />
+
+                    </div>
+                </div>
+
+                <div className="userProfileEdit__buttonContainer">
+                    <button
+                        className="userProfileEdit__button"
+                        type="submit"
+                    >
+                        Update Profile
+                    </button>
+                </div>
+
             </form>
 
-            <form className="userProfileEditForm" onSubmit={(event) => handlePhotoUpdate(event)}>
-                <label>
-                    Edit Photo
+            <form
+                className="userProfileEditForm"
+                onSubmit={(event) => handlePhotoUpdate(event)}
+            >
+            
+                <label className="userProfileEditForm__label">
+                    Edit Photo:
+                </label>
+
+                <div className="userProfileEditForm__imageSelect">
                     <input
                         ref={filePickerRef}
                         type="file"
+                        id="file"
+                        className="userProfileEditForm__file"
                         accept=".jpg,.png,.jpeg"
                         onChange={(event) => handleImageSelect(event)}
                     />
-                </label>
-                <button type="submit">Update Photo</button>
+                    <label
+                        className="userProfileEditForm__select"
+                        htmlFor="file"
+                    >
+                        Select Image
+                    </label>
+                </div>
+
+                <button
+                    className="userProfileEdit__button"
+                    type="submit"
+                >
+                    Update Photo
+                </button>
+
             </form>
-            <button onClick={handleEditShow}>Done</button>
+
+            <div className="userProfileEdit__buttonDone">
+                <button
+                    className="userProfileEdit__button"
+                    onClick={() => { setProfileEdit(false) }}
+                >
+                    Done
+                </button>
+            </div>
+
         </div>
 
     );

@@ -1,10 +1,54 @@
-.userProfileInfo{
+.userProfileInfo {
     border: 1px solid blue;
     border-radius: 0.5em;
     padding: 1.0em;
     width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.userProfileInfo p {
+.userProfileInfo__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.userProfileInfo__text {
     color: var(--captainAmerica-white);
+    font-size: 2.0em;
+}
+
+.userProfileInfo__text span {
+    display: inline-block;
+    width: 5.0em;
+}
+
+.userProfileInfo__button {
+    background-color: var(--captainAmerica-gray);
+    border: 2px solid red;
+    border-radius: 0.5em;
+    color: var(--captainAmerica-red);
+    font-size: 1.0em;
+    font-weight: bold;
+    height: 3.0em;
+    margin: 0.5em 0.25em;
+    width: 6.0em
+}
+
+.userProfileInfo__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.userProfileInfo__button {
+    background-color: var(--captainAmerica-gray);
+    border: 2px solid red;
+    border-radius: 0.5em;
+    color: var(--captainAmerica-red);
+    font-size: 1.0em;
+    font-weight: bold;
+    height: 3.0em;
+    margin: 0.5em 0.25em;
+    width: 6.0em;
 }
