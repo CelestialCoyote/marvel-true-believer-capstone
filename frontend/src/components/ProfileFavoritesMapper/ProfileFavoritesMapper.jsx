@@ -1,9 +1,8 @@
-import CharacterCard from '../CharacterCard/CharacterCard';
+import ProfileFavoriteCard from '../ProfileFavoriteCard/ProfileFavoriteCard';
 import './ProfileFavoritesMapper.css';
 
 
-const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails, favoritesButton }) => {
-    //console.log('characters from favorites mapper: ', characters);
+const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails }) => {
 
     return (
 
@@ -13,11 +12,10 @@ const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails
                 {characters &&
                     characters.map(character =>
                         <li key={character.id}>
-                            <CharacterCard
+                            <ProfileFavoriteCard
                                 character={character}
                                 setFavoriteCharacter={setFavoriteCharacter}
                                 setCharacterDetails={setCharacterDetails}
-                                favoritesButton={favoritesButton}
                             />
                         </li>
                     )
