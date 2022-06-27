@@ -1,9 +1,17 @@
 import React from 'react';
 import { BiLike } from 'react-icons/bi';
+import { MdDeleteForever } from 'react-icons/md';
 import './ProfileFavoriteCard.css';
 
 
-const ProfileFavoriteCard = ({ character, addToFavorites, likeCharacter, setFavoriteCharacter, setCharacterDetails }) => {
+const ProfileFavoriteCard = ({
+    character,
+    likeCharacter,
+    setFavoriteCharacter,
+    setCharacterDetails,
+    removeFromFavorites
+}) => {
+
     const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
     return (
@@ -16,7 +24,7 @@ const ProfileFavoriteCard = ({ character, addToFavorites, likeCharacter, setFavo
             </div>
             <div className="profileFavoriteCard__container">
                 <div className="profileFavoriteCard__info">
-                     <p
+                    <p
                         className="characterCard__text">
                         <span className="heading">Marvel ID: </span>
                         {character.id}
@@ -46,7 +54,17 @@ const ProfileFavoriteCard = ({ character, addToFavorites, likeCharacter, setFavo
                             color="var(--captainAmerica-darkBlue)"
                             fontSize="1.5em"
                         />
-                        Like
+                        <span>Like</span>
+                    </button>
+                    <button
+                        className="profileFavoriteCard__button"
+                        onClick={() => removeFromFavorites(character.id)}
+                    >
+                        <MdDeleteForever
+                            color="var(--captainAmerica-darkBlue)"
+                            fontSize="1.5em"
+                        />
+                        <span>Delete</span>
                     </button>
                 </div>
             </div>

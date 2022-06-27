@@ -21,6 +21,7 @@ const Login = () => {
 
     return (
         <div className="login">
+
             <form className="login__form" onSubmit={handleSubmit}>
                 <label>
                     Email:{" "}
@@ -46,6 +47,7 @@ const Login = () => {
                 <Link to="/register">Click to register!</Link>
                 <button className="login__button">Login!</button>
             </form>
+            
         </div>
     );
 };

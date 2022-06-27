@@ -1,20 +1,22 @@
 .login {
     align-items: center;
-    background-color: lightblue;
     display: flex;
     font-size: 1.0em;
-    height: 50%;
-    justify-content: center;
+    height: 50vh;
     margin: auto;
+    padding-top: 20.0em;
     width: 50%;
 }
 
 .login__form {
     align-items: center;
+    background-color: lightblue;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 1rem;
+    height: 45vh;
+    justify-content: center;
+    gap: 1.0em;
+    width: 100%;
 }
 
 .login__form input {

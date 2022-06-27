@@ -2,7 +2,12 @@ import ProfileFavoriteCard from '../ProfileFavoriteCard/ProfileFavoriteCard';
 import './ProfileFavoritesMapper.css';
 
 
-const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails }) => {
+const FavoritesMapper = ({ 
+    characters,
+    setFavoriteCharacter,
+    setCharacterDetails,
+    removeFromFavorites
+}) => {
 
     return (
 
@@ -16,6 +21,7 @@ const FavoritesMapper = ({ characters, setFavoriteCharacter, setCharacterDetails
                                 character={character}
                                 setFavoriteCharacter={setFavoriteCharacter}
                                 setCharacterDetails={setCharacterDetails}
+                                removeFromFavorites={removeFromFavorites}
                             />
                         </li>
                     )

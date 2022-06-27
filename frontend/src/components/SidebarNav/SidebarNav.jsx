@@ -31,14 +31,20 @@ const SidebarNav = () => {
                             className="sidebarNav__logInOut"
                             onClick={logoutUser}
                         >
-                            <BiLogOut /> Logout
+                            <div className="sidebarNav__button">
+                                <BiLogOut />
+                                <span>Logout</span>
+                            </div>
                         </button>
                     ) : (
                         <button
                             className="sidebarNav__logInOut"
                             onClick={() => navigate("/login")}
                         >
-                            <BiLogIn /> Login
+                            <div className="sidebarNav__button">
+                                <BiLogIn />
+                                <span>Login</span>
+                            </div>
                         </button>
                     )}
                 </div>

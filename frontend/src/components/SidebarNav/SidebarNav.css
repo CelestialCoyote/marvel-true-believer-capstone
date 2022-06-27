@@ -39,7 +39,13 @@
     margin-right: 2.5em;
     position: absolute;
     right: 0;
-    width: 15vh;
+    width: 18vh;
+}
+
+.sidebarNav__button {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .sidebarNav__menu {

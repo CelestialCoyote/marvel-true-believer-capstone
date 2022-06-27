@@ -2,9 +2,10 @@
     border-top: 4px solid var(--captainAmerica-gray);
     display: flex;
     flex-direction: column;
-    margin: 0.5em;
-    padding: 1.0em;
+    margin: 0.25em;
+    padding: 0.5em;
     overflow-y: scroll;
+    width: 80%;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -27,7 +28,7 @@
 .characterDetails__character {
     display: flex;
     flex-direction: row;
-    width: 75%
+    width: 60%
 }
 
 .characterDetails__image {
