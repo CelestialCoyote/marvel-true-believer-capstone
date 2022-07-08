@@ -33,59 +33,31 @@ const Post = (props) => {
     return (
 
         <div className="post">
-            <div className="post__avatar">
+            <div className="post_avatar">
                 <img src={`http://localhost:3015/${props.post.userID.image}`} alt="" />
             </div>
-            <div className="post__body">
-                <div className="post__header">
-                    <div className="post__userName">
+            <div className="post_body">
+                <div className="post_header">
+                    <div className="post_userName">
                         {props.post.userID.userName}
                     </div>
-                    <div className="post__text">
+                    <div className="post_text">
                         {props.post.text}
                     </div>
                 </div>
-                <div className="post__footer">
-                    <p className="post__date">Date: {new Date(props.post.createdAt).toLocaleDateString()}</p>
-                    <div className="post__like">
+                <div className="post_footer">
+                    <p className="post_date">Date: {new Date(props.post.createdAt).toLocaleDateString()}</p>
+                    <div className="post_like">
                         <BiLike
                             color="var(--captainAmerica-white)"
                             fontSize="1.5em"
                             onClick={addLike}
                         />
-                        <p className="post__likeCount">{props.post.likes}</p>
+                        <p className="post_likeCount">{props.post.likes}</p>
                     </div>
                 </div>
             </div>
-            {/*<div className="postCreator">
-                <img
-                    className="postCreatorProfilePic"
-                    alt="profile pic"
-                    src={`http://localhost:3015/${props.post.userID.image}`}
-                />
-                <label className="creatorText">Posted by:<br></br>{props.post.userID.userName}</label>
-            </div>
-
-            <div className="postDataContainer">
-                <p className="postText">{props.post.text}</p>
-
-                <div className="postData">
-
-                    <p className="postText">Date posted: {new Date(props.post.createdAt).toLocaleDateString()}</p>
-
-                    <div className="likePost">
-
-                        <p className="postText">Likes: {props.post.likes}</p>
-                        <button onClick={addLike} className="postLikeButton">Like!</button>
-
-                    </div>
-
-                    <label className="postText">Edit Post</label>
-                    {!props.friendsList ? <button>Edit</button> : null}
-
-                </div>
-            </div>*/}
-
+            
         </div >
 
     );
@@ -93,14 +65,3 @@ const Post = (props) => {
 
 
 export default Post;
-
-
-//useEffect(() => {
-    //}, [props.post]);
-
-    //options = {
-    //    year: 'numeric', month: 'numeric', day: 'numeric',
-    //    hour: 'numeric', minute: 'numeric', second: 'numeric',
-    //    hour12: false,
-    //    timeZone: 'America/Los_Angeles'
-    //  };

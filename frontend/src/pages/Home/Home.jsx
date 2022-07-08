@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import PostForm from "../../components/PostForm/PostForm";
-import PostMapper from "../../components/PostMapper/PostMapper";
+import Post from "../../components/Post/Post";
 import TwitterFeed from '../../components/TwitterFeed/TwitterFeed';
 import "./Home.css";
 
@@ -10,7 +10,7 @@ import "./Home.css";
 const Home = () => {
     const { user } = useContext(AuthContext);
     const decodedUser = localStorage.getItem("token");
-    const [posts, setPosts] = useState(null);
+    const [setPosts] = useState(null);
     const [postsWithUserInfo, setPostsWithUserInfo] = useState(null);
 
     const handleGetPosts = async () => {
@@ -23,23 +23,34 @@ const Home = () => {
 
     useEffect(() => {
         handleGetPosts();
-    }, [posts]);
+    });
 
     return (
 
         <div className="home">
+            
             <div className="home_postFeed">
 
-                <div className="">
                     <PostForm user={user} setPosts={setPosts} />
 
-                    <PostMapper postsWithUserInfo={postsWithUserInfo} setPosts={setPosts} handleGetPosts={handleGetPosts} />
-                </div>
+                    <div className="postMapper">
+                        {postsWithUserInfo &&
+                            postsWithUserInfo.map(post =>
+                                <Post
+                                    //key={post._id}
+                                    post={post}
+                                    setPosts={setPosts}
+                                    handleGetPosts={handleGetPosts}
+                                />
+                            )}
+                    </div>
 
             </div>
+
             <TwitterFeed />
+
         </div>
-        
+
     );
 };
 

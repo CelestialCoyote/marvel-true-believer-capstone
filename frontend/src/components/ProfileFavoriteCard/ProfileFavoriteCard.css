@@ -36,7 +36,7 @@
 .profileFavoriteCard__actions {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 2.0em;
 }
 

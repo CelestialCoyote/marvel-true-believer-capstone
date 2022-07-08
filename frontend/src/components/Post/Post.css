@@ -7,43 +7,43 @@
     margin-bottom: 0.5em;
 }
 
-.post__body {
+.post_body {
     flex: 1;
     padding: 10px;
 }
 
-.post__avatar img {
+.post_avatar img {
     border-radius: 2.0em;
     height: 4.0em;
     margin: 1.5em;
     width: 4.0em;
 }
 
-.post__text {
+.post_text {
     color: var(--captainAmerica-white);
     font-size: 1.25em;
     margin-bottom: 1.5em;
 }
 
-.post__userName {
+.post_userName {
     color: var(--captainAmerica-gray);
     font-size: 1.0emem;
     margin-bottom: 1.0em;
 }
 
-.post__date,
-.post__likeCount {
+.post_date,
+.post_likeCount {
     color: var(--captainAmerica-white);
     font-size: 1.0em;
 }
 
-.post__footer {
+.post_footer {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.post__like {
+.post_like {
     align-items: center;
     display: flex;
     flex-direction: row;
