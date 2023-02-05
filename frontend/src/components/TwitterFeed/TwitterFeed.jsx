@@ -11,7 +11,7 @@ const TwitterFeed = () => {
                 sourceType="profile"
                 screenName="Marvel"
                 options={{
-                    height: "84vh"
+                    height: "925"
                   }}
                 theme="dark"
                 noScrollbar="true"
